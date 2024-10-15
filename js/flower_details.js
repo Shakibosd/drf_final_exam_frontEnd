@@ -20,12 +20,6 @@ function order_flower(flower) {
     const input = document.getElementById("quantity");
     const product_quantity = parseInt(input.value);
 
-    if (!userId) {
-      console.log("User not logged in");
-      alert("You need to be logged in to place an order");
-      return;
-    }
-
     if (product_quantity <= flower.stock) {
       fetch("http://127.0.0.1:8000/orders/create_order/", {
         method: "POST",
@@ -41,13 +35,13 @@ function order_flower(flower) {
         .then((response) => response.json())
         .then((response) => {
           console.log("Order placed successfully:", response);
-          alert("Order placed successfully!");
+          alert("Order Placed Successfully And Check Your Email");
           window.location.href = "./update_profile.html";
         })
         .catch((error) => {
           console.log("Order error", error);
           alert("Error placing order");
-          window.location.href = "./update_profile.html";
+          // window.location.href = "./update_profile.html";
         });
     } else {
       console.log("Insufficient stock");
