@@ -10,7 +10,7 @@ document.getElementById("changePasswordForm")
 
     try {
       const response = await fetch(
-        "http://127.0.0.1:8000/profiles/pass_cng/",
+        "https://flower-seal.onrender.com/profiles/pass_cng/",
         {
           method: "POST",
           headers: {
