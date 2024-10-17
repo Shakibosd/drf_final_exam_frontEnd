@@ -1,7 +1,7 @@
 //user er data
 document.addEventListener("DOMContentLoaded", () => {
   const user_id = localStorage.getItem("user_id");
-  const apiUrl = `https://flower-seal.onrender.com/profiles/user/${user_id}/`;
+  const apiUrl = `https://flower-seals.onrender.com/profiles/user/${user_id}/`;
   const token = localStorage.getItem("token");
 
   fetch(apiUrl, {
@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
-  fetch("https://flower-seal.onrender.com/orders/my_orders/", {
+  fetch("https://flower-seals.onrender.com/orders/my_orders/", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",

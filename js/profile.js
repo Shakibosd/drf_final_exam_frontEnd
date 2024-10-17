@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   function fetchFlowers(filter) {
-    fetch("https://flower-seal.onrender.com/flowers/flowers/")
+    fetch("https://flower-seals.onrender.com/flowers/flowers/")
       .then((res) => res.json())
       .then((data) => {
         let filteredFlowers = data;

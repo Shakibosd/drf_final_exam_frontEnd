@@ -7,7 +7,7 @@ fetch("navbar.html")
     const token = localStorage.getItem("authToken");
 
     if (token) {
-      fetch("https://flower-seal.onrender.com/admins/is_admin/", {
+      fetch("https://flower-seals.onrender.com/admins/is_admin/", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
