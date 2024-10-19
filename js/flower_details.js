@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const urlParams = new URLSearchParams(window.location.search);
   const flowerId = urlParams.get("id");
 
-  fetch(`https://flower-seals.onrender.com/flowers/flowers/${flowerId}/`)
+  fetch(`https://flower-seal-backend.vercel.app/flowers/flowers/${flowerId}/`)
     .then((response) => response.json())
     .then((data) => {
       displayFlowerDetails(data);
@@ -21,7 +21,7 @@ function order_flower(flower) {
     const product_quantity = parseInt(input.value);
 
     if (product_quantity <= flower.stock) {
-      fetch("https://flower-seals.onrender.com/orders/create_order/", {
+      fetch("https://flower-seal-backend.vercel.app/orders/create_order/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -150,7 +150,7 @@ const CheckOrder = async (flowerId) => {
   const token = localStorage.getItem("authToken");
   try {
     const response = await fetch(
-      `https://flower-seals.onrender.com/flowers/check_order/?flowerId=${flowerId}`,
+      `https://flower-seal-backend.vercel.app/flowers/check_order/?flowerId=${flowerId}`,
       {
         method: "GET",
         headers: {
@@ -185,7 +185,7 @@ const post_comment = (flowerId) => {
     const username = document.getElementById("name").value;
     const usertext = document.getElementById("text").value;
 
-    fetch("https://flower-seals.onrender.com/flowers/comments_api/", {
+    fetch("https://flower-seal-backend.vercel.app/flowers/comments_api/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -212,7 +212,7 @@ const post_comment = (flowerId) => {
 
 //comment get
 const get_comments = (flowerId) => {
-  fetch(`https://flower-seals.onrender.com/flowers/get_comment/${flowerId}/`)
+  fetch(`https://flower-seal-backend.vercel.app/flowers/get_comment/${flowerId}/`)
     .then((res) => res.json())
     .then((data) => {
       console.log(data);
@@ -286,7 +286,7 @@ const attachDeleteCommentHandlers = () => {
       const commentId = button.getAttribute("data-id");
 
       if (confirm("Are you sure you want to delete this comment?")) {
-        fetch(`https://flower-seals.onrender.com/flowers/comments_api/${commentId}/`, {
+        fetch(`https://flower-seal-backend.vercel.app/flowers/comments_api/${commentId}/`, {
           method: "DELETE",
         })
           .then((response) => {

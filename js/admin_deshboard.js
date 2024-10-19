@@ -1,6 +1,6 @@
 //all post show frontend flower data
 function fetchPosts() {
-  fetch("https://flower-seals.onrender.com/flowers/flowers/")
+  fetch("https://flower-seal-backend.vercel.app/flowers/flowers/")
     .then((response) => response.json())
     .then((data) => {
       let postList = document.getElementById("post-list");
@@ -40,7 +40,7 @@ function fetchPosts() {
 //edit flower data
 function editPost(postId) {
   console.log("Inside edit post", postId);
-  fetch(`https://flower-seals.onrender.com/flowers/flowers/${postId}/`)
+  fetch(`https://flower-seal-backend.vercel.app/flowers/flowers/${postId}/`)
     .then((response) => response.json())
     .then((post) => {
       document.getElementById("edit-post-id").value = post.id;
@@ -73,7 +73,7 @@ document.getElementById("edit-post-form").addEventListener("submit", function (e
     formData.append("image", imageFile);
   }
 
-  fetch(`https://flower-seals.onrender.com/flowers/flowers/${postId}/`, {
+  fetch(`https://flower-seal-backend.vercel.app/flowers/flowers/${postId}/`, {
     method: "PUT",
     headers: {
       Authorization: `token ${token}`,
@@ -99,7 +99,7 @@ document.getElementById("edit-post-form").addEventListener("submit", function (e
 function deletePost(postId) {
   const token = localStorage.getItem("authToken");
   if (confirm("Are you sure you want to delete this post?")) {
-    fetch(`https://flower-seals.onrender.com/admins/post_detail/${postId}/`, {
+    fetch(`https://flower-seal-backend.vercel.app/admins/post_detail/${postId}/`, {
       method: "DELETE",
       headers: {
         Authorization: `token ${token}`,
@@ -120,7 +120,7 @@ function deletePost(postId) {
 //user list show data
 function fetchUsers() {
   const token = localStorage.getItem("authToken");
-  fetch("https://flower-seals.onrender.com/admins/user_list/", {
+  fetch("https://flower-seal-backend.vercel.app/admins/user_list/", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -185,7 +185,7 @@ document.getElementById("create-post-form").addEventListener("submit", function 
 
         const token = localStorage.getItem("authToken");
 
-        fetch("https://flower-seals.onrender.com/admins/post_list/", {
+        fetch("https://flower-seal-backend.vercel.app/admins/post_list/", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

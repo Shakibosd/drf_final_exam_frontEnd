@@ -15,7 +15,7 @@ const handleRegister = (event) => {
 
   console.log("Registration data", registerData);
 
-  fetch("https://flower-seals.onrender.com/users/register/", {
+  fetch("https://flower-seal-backend.vercel.app/users/register/", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -42,7 +42,7 @@ const handleLogin = (event) => {
     password: formData.get("password"),
   };
 
-  fetch("https://flower-seals.onrender.com/users/login/", {
+  fetch("https://flower-seal-backend.vercel.app/users/login/", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -75,7 +75,7 @@ const handleLogout = () => {
     const token = localStorage.getItem("authToken");
     const user_id = localStorage.getItem("user_id");
 
-    fetch("https://flower-seals.onrender.com/users/logout/", {
+    fetch("https://flower-seal-backend.vercel.app/users/logout/", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

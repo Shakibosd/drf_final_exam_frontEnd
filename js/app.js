@@ -1,6 +1,6 @@
 //unauthentiacted landing page flower list show
 const loadFlowers = () => {
-  fetch("https://flower-seals.onrender.com/flowers/flowers/")
+  fetch("https://flower-seal-backend.vercel.app/flowers/flowers/")
     .then((response) => response.json())
     .then((data) => displayFlowers(data))
     .catch((error) => console.log(error));
