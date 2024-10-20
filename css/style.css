@@ -19,10 +19,9 @@ nav {
 }
 
 .logo-img {
-  width: 90px;
-  height: 90px;
-  /* color: unset; */
-  border-radius: 45px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
 }
 
 .ekrokom_color {
