@@ -10,7 +10,7 @@ const displayFlowers = (flowers) => {
   flowers.forEach((flower) => {
     const parent = document.getElementById("flower-container");
     const card = document.createElement("div");
-    card.classList.add("col-sm-12", "col-md-6", "col-lg-4", "mb-5");
+    card.classList.add("col-sm-12", "col-md-6", "col-lg-4", "mb-4");
 
     card.innerHTML = `
       <div class="card bg-white text-dark pt-3 index_flower_card" style="border-radius: 15px;">

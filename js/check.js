@@ -5,4 +5,5 @@ const checks = () => {
     window.location.href = "./login.html";
   }
 };
-window.onload = checks;
+
+checks();

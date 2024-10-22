@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     flowers.forEach((flower) => {
       const flowerCard = document.createElement("div");
-      flowerCard.classList.add("col-sm-12", "col-md-6", "col-lg-4", "mb-5");
+      flowerCard.classList.add("col-sm-12", "col-md-6", "col-lg-4", "mb-4");
 
       flowerCard.innerHTML = `
         <div class="card bg-white text-dark pt-3 index_flower_card" style="border-radius:15px;">
