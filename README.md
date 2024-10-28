@@ -35,7 +35,7 @@
       <ul>
       <li>Browse products, add them to your cart, view details, and interact with wishlists and reviews.</li>
       <li>Register as a new user or login if you already have an account.</li>
-      <li>Navigate to https://cloth-store-backend-api.vercel.app/ in your browser.</li>
+      <li>Navigate to https://flower-seal-backend.vercel.app/ in your browser.</li>
     </ul>
     <h2>Contact</h2>
     <ul>
