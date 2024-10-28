@@ -73,7 +73,7 @@ async function displayFlowerDetails(flower) {
                     </button>
                 </div>
                 <div class="col-12">
-                    <a type="button" class="btn btn-primary w-100" id="payment-button">
+                    <a class="btn btn-primary w-100" id="payment-button">
                       Payment
                     </a>
                 </div>
@@ -150,7 +150,7 @@ async function displayFlowerDetails(flower) {
     
     paymentButton.addEventListener("click", async () => {
       if (orderExists) {
-        window.location.href = "https://sandbox.sslcommerz.com/EasyCheckOut/testcde5e96d9cc49334ccb6bec36cd292f76d6";
+        window.location.href = "https://sandbox.sslcommerz.com/EasyCheckOut/testcde2ef8399171e184e26083df828c3923be";
       } else {
         alert("You must order this flower before proceeding to payment.");
       }
