@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- meta charset -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- my web icon -->
+  <link rel="shortcut icon" href="images/img-icon.jpg" type="image/x-icon" />
+  <!-- css linkup -->
+  <link rel="stylesheet" href="./css/style.css" />
+  <link rel="stylesheet" href="./css/dark.css" />
+  <!-- my web title -->
+  <title>Profile Page</title>
+  <!-- bootstrap cdn -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+  <!-- boxines icon -->
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+</head>
+
+<body>
+  <!-- Navbar -->
+  <div id="navbar"></div>
+  <script src="./js/navbar.js"></script>
+
+  <!-- Profile Update -->
+  <section>
+    <div class="container" style="padding-top: 70px;">
+      <div class="py-5"></div>
+      <div class="card index_flower_card text-center p-4" style="border-radius: 20px; line-height: 39px;">
+        <div class="table-responsive">
+          <table class="container">
+            <tr>
+              <th>
+                <h4>User</h4>
+              </th>
+              <th>
+                <h4>Flower</h4>
+              </th>
+              <th>
+                <h4>Quantity</h4>
+              </th>
+              <th>
+                <h4>Status</h4>
+              </th>
+              <th>
+                <h4>Order Date</h4>
+              </th>
+            </tr>
+
+            <tbody id="order-history">
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+
+
+  <section>
+    <h1 class="text-center pt-4">Your Profile Page</h1>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-md-4 mb-4 text-center">
+          <img src="images/profile.svg" alt="profile-img" class="img-fluid index_flower_card profile-img w-100"
+            style="border-radius: 20px;" />
+        </div>
+        <div class="col-12 col-md-8">
+          <br>
+          <div class="card p-4 index_flower_card" style="border-radius: 20px;">
+            <form class="row g-3" id="profile-form">
+              <div class="col-12">
+                <label for="username" class="form-label"><b>Username</b></label>
+                <input type="text" class="form-control text-dark" id="username" name="username" required />
+              </div>
+              <div class="col-md-6">
+                <label for="first_name" class="form-label"><b>First Name</b></label>
+                <input type="text" class="form-control text-dark" id="first_name" name="first_name" required />
+              </div>
+              <div class="col-md-6">
+                <label for="last_name" class="form-label"><b>Last Name</b></label>
+                <input type="text" class="form-control text-dark" id="last_name" name="last_name" required />
+              </div>
+              <div class="col-12">
+                <label for="email" class="form-label"><b>Email</b></label>
+                <input type="email" class="form-control text-dark" id="email" name="email" required />
+              </div>
+              <div class="col-12">
+                <button type="submit" class="btn btn-outline-info w-100">
+                  <b>Update Profile</b>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Footer -->
+  <footer>
+    <div id="footer" class="pt-4"></div>
+    <script src="./js/footer.js"></script>
+  </footer>
+
+  <!-- Auth Js -->
+  <script src="./js/auth.js"></script>
+
+  <!-- profile update -->
+  <script src="./js/update_profile.js"></script>
+
+  <!-- check js -->
+  <script src="./js/check.js"></script>
+
+  <!-- dark -->
+  <script src="./js/dark.js"></script>
+
+  <!-- bootstrap scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+    integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+    integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
