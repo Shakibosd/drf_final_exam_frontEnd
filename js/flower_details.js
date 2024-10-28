@@ -34,7 +34,7 @@ function order_flower(flower) {
       })
         .then((response) => response.json())
         .then((response) => {
-          console.log("Order placed successfully:", response);
+          console.log("Order placed successfully : ", response);
           alert("Order Placed Successfully And Check Your Email");
           window.location.href = "./update_profile.html";
         })
@@ -150,7 +150,7 @@ async function displayFlowerDetails(flower) {
     
     paymentButton.addEventListener("click", async () => {
       if (orderExists) {
-        window.location.href = "https://sandbox.sslcommerz.com/EasyCheckOut/testcde2ef8399171e184e26083df828c3923be";
+        window.location.href = "https://sandbox.sslcommerz.com/EasyCheckOut/testcde8362a74aada42480da6486751618d42d";
       } else {
         alert("You must order this flower before proceeding to payment.");
       }
