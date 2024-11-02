@@ -1,3 +1,19 @@
+//password icon
+const togglePassword = (fieldId, iconElement) => {
+  let passwordField = document.getElementById(fieldId);
+  let icon = iconElement.querySelector("i");
+
+  if (passwordField.type === "password") {
+    passwordField.type = "text";
+    icon.classList.remove("bxs-low-vision");
+    icon.classList.add("bxs-show");
+  } else {
+    passwordField.type = "password";
+    icon.classList.remove("bxs-show");
+    icon.classList.add("bxs-low-vision");
+  }
+};
+
 // Register part
 const handleRegister = (event) => {
   event.preventDefault();

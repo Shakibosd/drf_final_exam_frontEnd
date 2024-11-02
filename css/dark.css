@@ -150,3 +150,14 @@ body.dark-mode .dropdown-item {
 body.dark-mode .dropdown-item:hover {
     background-color: #495057;
 }
+
+body.dark-mode .input-group-text {
+    background-color: #333;
+    color: white;
+}
+
+body.dark-mode .form-control {
+    background-color: #222;
+    color: white;
+    border: 1px solid #444;
+}

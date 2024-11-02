@@ -50,8 +50,14 @@
         <br>
         <div>
           <label for="password" class="form-label"><b>Password</b></label>
-          <input type="password" class="form-control" id="password" name="password"
-            placeholder="Please Enter Your Password" required />
+          <div class="input-group">
+            <input type="password" class="form-control" id="password" name="password"
+              placeholder="Please Enter Your Password" required />
+            <span class="input-group-text p-2"
+              onclick="togglePassword('password', this)">
+              <i class='bx bxs-low-vision'></i>
+            </span>
+          </div>
         </div>
         <br>
         <div>

@@ -38,13 +38,25 @@
         <form id="changePasswordForm" class="row g-3">
           <div class="col-12">
             <label for="oldPassword" class="form-label"><b>Old Password</b></label>
-            <input type="password" class="form-control" id="oldPassword" name="oldPassword"
-              placeholder="Please Enter Your Old Password" required />
+            <div class="input-group">
+              <input type="password" class="form-control" id="oldPassword" name="oldPassword"
+                placeholder="Please Enter Your Old Password" required />
+              <span class="input-group-text p-2"
+                onclick="togglePassword('oldPassword', this)">
+                <i class='bx bxs-low-vision'></i>
+              </span>
+            </div>
           </div>
           <div class="col-12">
             <label for="newPassword" class="form-label"><b>New Password</b></label>
-            <input type="password" class="form-control" id="newPassword" name="newPassword"
-              placeholder="Please Enter A New Strong Password" required />
+            <div class="input-group">
+              <input type="password" class="form-control" id="newPassword" name="newPassword"
+                placeholder="Please Enter A New Strong Password" required />
+              <span class="input-group-text p-2"
+                onclick="togglePassword('newPassword', this)">
+                <i class='bx bxs-low-vision'></i>
+              </span>
+            </div>
           </div>
           <div class="col-12">
             <button type="submit" class="btn btn-outline-info w-100">

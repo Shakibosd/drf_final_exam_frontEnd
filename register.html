@@ -64,13 +64,24 @@
         </div>
         <div>
           <label for="password" class="form-label"><b>Password</b></label>
-          <input type="password" class="form-control" id="password" name="password"
-            placeholder="Please Enter A Password" required />
+          <div class="input-group">
+            <input type="password" class="form-control" id="password" name="password"
+              placeholder="Please Enter A Password" required />
+            <span class="input-group-text p-2" onclick="togglePassword('password', this)">
+              <i class='bx bxs-low-vision'></i>
+            </span>
+          </div>
         </div>
         <div>
           <label for="confirm_password" class="form-label"><b>Confirm Password</b></label>
-          <input type="password" class="form-control" id="confirm_password" name="confirm_password"
-            placeholder="Please Enter Confirm Password" required />
+          <div class="input-group">
+            <input type="password" class="form-control" id="confirm_password" name="confirm_password"
+              placeholder="Please Enter Confirm Password" required />
+            <span class="input-group-text p-2"
+              onclick="togglePassword('confirm_password', this)">
+              <i class='bx bxs-low-vision'></i>
+            </span>
+          </div>
         </div>
         <div>
           <button type="submit" class="btn btn-outline-info">
