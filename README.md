@@ -1,12 +1,12 @@
 <section>
   <div class="center">
     <h1>Flower Seal Management</h1>
-    <p>An e-commerce platform designed for selling clothing, with a range of features to enhance user experience. Users can browse items, add products to their cart, view product details, and 
-    perform various actions like sorting, filtering, and searching to find the perfect outfit. There are two types of user Admin</p>
-    <ul>
+    <p>This application is flowersale where you can see and buy different categories of flowers. Authentication system is also added in this 
+     application. I used Django Rest Framework to build this application.</p>
+    <ol>
       <li>Admin</li>
       <li>User</li>
-    </ul>
+    </ol>
     <h2>Admin</h2>
     <ul>
       <li>Admin can log in and log out.</li>
