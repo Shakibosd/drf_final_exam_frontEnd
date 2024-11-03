@@ -2,7 +2,7 @@
   <div class="center">
     <h1>Flower Seal Management</h1>
     <p>This application is flowersale where you can see and buy different categories of flowers. Authentication system is also added in this 
-     application. I used Django Rest Framework to build this application.</p>
+     application. I used Html, Css, Javascript, Bootstrap to build this application.</p>
     <ol>
       <li>Admin</li>
       <li>User</li>
