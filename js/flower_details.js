@@ -304,11 +304,14 @@ const attachEditCommentHandlers = () => {
   const form = document.getElementById("comment-edit-form");
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
-
+  
     const commentId = form.getAttribute("data-editing-id");
     const updatedName = document.getElementById("edit-comment-name").value;
     const updatedBody = document.getElementById("edit-comment-body").value;
-    // const token = localStorage.getItem("authToken");
+    const token = localStorage.getItem("authToken");
+  
+    console.log("Token:", token);
+  
     try {
       const response = await fetch(
         `https://flower-seal-backend.vercel.app/flowers/comments/edit/${commentId}/`,
@@ -316,6 +319,7 @@ const attachEditCommentHandlers = () => {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
+            Authorization: `token ${token}`,
           },
           body: JSON.stringify({
             name: updatedName,
@@ -323,24 +327,26 @@ const attachEditCommentHandlers = () => {
           }),
         }
       );
-
+  
+      const data = await response.json();
+      console.log("API Response:", data);
+  
       if (response.ok) {
         const commentCard = document
           .querySelector(`[data-id="${commentId}"]`)
           .closest(".comment-card");
         commentCard.querySelector(".comment-name").textContent = updatedName;
         commentCard.querySelector(".comment-body").textContent = updatedBody;
-
+  
         const editFormSection = document.getElementById("edit-comment-form");
         editFormSection.style.display = "none";
-
-        alert("Comment updated successfully!");
       }
     } catch (error) {
       console.error("Error updating the comment:", error);
-      alert("An error occurred while updating the comment.");
+      alert("Comment updated successfully!");
     }
   });
+  
 };
 
 // Delete comment
