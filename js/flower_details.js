@@ -150,7 +150,7 @@ async function displayFlowerDetails(flower) {
     
     paymentButton.addEventListener("click", async () => {
       if (orderExists) {
-        window.location.href = "http://127.0.0.1:8000/payment/payment/";
+        window.location.href = "https://flower-seal-backend.vercel.app/payment/payment/";
       } else {
         alert("You must order this flower before proceeding to payment.");
       }
