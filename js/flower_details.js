@@ -50,7 +50,7 @@ function order_flower(flower) {
   });
 }
 
-// Flower details 
+// Flower details
 async function displayFlowerDetails(flower) {
   const detailsContainer = document.getElementById("flower-details");
   detailsContainer.innerHTML = `
@@ -145,16 +145,17 @@ async function displayFlowerDetails(flower) {
             <br>
         </div>
     `;
-    const orderExists = await CheckOrder(flower.id);
-    const paymentButton = document.getElementById("payment-button");
-    
-    paymentButton.addEventListener("click", async () => {
-      if (orderExists) {
-        window.location.href = "https://flower-seal-backend.vercel.app/payment/payment/";
-      } else {
-        alert("You must order this flower before proceeding to payment.");
-      }
-    });
+  const orderExists = await CheckOrder(flower.id);
+  const paymentButton = document.getElementById("payment-button");
+
+  paymentButton.addEventListener("click", async () => {
+    if (orderExists) {
+      window.location.href =
+        "https://flower-seal-backend.vercel.app/payment/payment/";
+    } else {
+      alert("You must order this flower before proceeding to payment.");
+    }
+  });
   order_flower(flower);
   post_comment(flower.id);
   get_comments(flower.id);
@@ -227,7 +228,9 @@ const post_comment = (flowerId) => {
 
 //comment get
 const get_comments = (flowerId) => {
-  fetch(`https://flower-seal-backend.vercel.app/flowers/get_comment/${flowerId}/`)
+  fetch(
+    `https://flower-seal-backend.vercel.app/flowers/get_comment/${flowerId}/`
+  )
     .then((res) => res.json())
     .then((data) => {
       console.log(data);
@@ -274,22 +277,69 @@ const displayComment = (comments) => {
 
 // Edit comment
 const attachEditCommentHandlers = () => {
-  const editButtons = document.querySelectorAll(".edit-comment");
-  editButtons.forEach((button) => {
-    button.addEventListener("click", () => {
+  const editButtonsContainer = document.getElementById("comments-section");
+
+  editButtonsContainer.addEventListener("click", (event) => {
+    if (event.target.classList.contains("edit-comment")) {
+      const button = event.target;
+
       const commentId = button.getAttribute("data-id");
       const commentName = button.getAttribute("data-name");
       const commentBody = button.getAttribute("data-body");
 
-      const nameInput = document.getElementById("name");
-      const textInput = document.getElementById("text");
+      const nameInput = document.getElementById("edit-comment-name");
+      const textInput = document.getElementById("edit-comment-body");
 
       nameInput.value = commentName;
       textInput.value = commentBody;
 
-      const commentForm = document.getElementById("commentForm");
+      const commentForm = document.getElementById("comment-edit-form");
       commentForm.setAttribute("data-editing-id", commentId);
-    });
+
+      const editFormSection = document.getElementById("edit-comment-form");
+      editFormSection.style.display = "block";
+    }
+  });
+
+  const form = document.getElementById("comment-edit-form");
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const commentId = form.getAttribute("data-editing-id");
+    const updatedName = document.getElementById("edit-comment-name").value;
+    const updatedBody = document.getElementById("edit-comment-body").value;
+    // const token = localStorage.getItem("authToken");
+    try {
+      const response = await fetch(
+        `https://flower-seal-backend.vercel.app/flowers/comments/edit/${commentId}/`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: updatedName,
+            body: updatedBody,
+          }),
+        }
+      );
+
+      if (response.ok) {
+        const commentCard = document
+          .querySelector(`[data-id="${commentId}"]`)
+          .closest(".comment-card");
+        commentCard.querySelector(".comment-name").textContent = updatedName;
+        commentCard.querySelector(".comment-body").textContent = updatedBody;
+
+        const editFormSection = document.getElementById("edit-comment-form");
+        editFormSection.style.display = "none";
+
+        alert("Comment updated successfully!");
+      }
+    } catch (error) {
+      console.error("Error updating the comment:", error);
+      alert("An error occurred while updating the comment.");
+    }
   });
 };
 
@@ -301,9 +351,12 @@ const attachDeleteCommentHandlers = () => {
       const commentId = button.getAttribute("data-id");
 
       if (confirm("Are you sure you want to delete this comment?")) {
-        fetch(`https://flower-seal-backend.vercel.app/flowers/comments_api/${commentId}/`, {
-          method: "DELETE",
-        })
+        fetch(
+          `https://flower-seal-backend.vercel.app/flowers/comments_api/${commentId}/`,
+          {
+            method: "DELETE",
+          }
+        )
           .then((response) => {
             if (response.ok) {
               alert("Comment deleted successfully!");
