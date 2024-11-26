@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="./css/dark.css" />
 
   <!-- my web title -->
-  <title>Login Page</title>
+  <title>Hr Login</title>
   <!-- bootstrap cdn -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
@@ -44,18 +44,15 @@
       <form class="p-5" onsubmit="handleLogin(event)" id="login-form">
         <div>
           <label for="username" class="form-label"><b>Username</b></label>
-          <input type="text" class="form-control" id="username" name="username" placeholder="Please Enter Your Username"
+          <input type="text" value="flowersealadmin" class="form-control" id="username" name="username" placeholder="Please Enter Your Username"
             required />
         </div>
         <br>
         <div>
           <label for="password" class="form-label"><b>Password</b></label>
           <div class="input-group">
-            <input type="password" class="form-control" id="password" name="password"
+            <input type="password" value="flowersealadmin" class="form-control" id="password" name="password"
               placeholder="Please Enter Your Password" required />
-            <span class="input-group-text p-2" onclick="togglePassword('password', this)">
-              <i class='bx bxs-low-vision'></i>
-            </span>
           </div>
         </div>
         <br>

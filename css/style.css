@@ -272,40 +272,39 @@ nav {
   position: relative;
 }
 
-/* desktop */
-@media (min-width: 1012px) {
-  .flower {
-    padding-top: 550px;
+/* Desktop view */
+@media (min-width: 1200px) {
+  .flower_left {
+    padding-left: 240px;
+    padding-top: 540px;
   }
 }
 
-/* mobile */
-@media (max-width: 767px) {
-  .flower {
-    padding-top: 250px;
+/* Mobile small (extra small devices) */
+@media (max-width: 576px) {
+  .flower_left {
+    padding-left: 40px; 
+    padding-top: 230px;
   }
 }
 
-/* tablet */
-@media (min-width: 768px) and (max-width: 1011px) {
-  .flower {
+/* Mobile medium (small to medium devices) */
+@media (min-width: 576px) and (max-width: 768px) {
+  .flower_left {
+    padding-left: 40px;
     padding-top: 300px;
   }
 }
 
-
-@media (min-width: 1024px) {
+/* Mobile large / tablet (large mobile and small tablet devices) */
+@media (min-width: 768px) and (max-width: 992px) {
   .flower_left {
-    padding-left: 240px;
+    padding-left: 40px;
+    padding-top: 500px;
   }
 }
 
 
-@media (max-width: 767px) {
-  .flower_left {
-    padding-left: 45px;
-  }
-}
 
 .f-wrapper {
   position: absolute;
