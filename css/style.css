@@ -26,7 +26,13 @@ nav {
 }
 
 .calimg {
-  height: 600px;
+  height: 500px;
+}
+
+@media (max-width: 576px) {
+  .calimg {
+   height: 200px;
+  }
 }
 
 /* Seasonal Flowers Section */
@@ -152,6 +158,7 @@ nav {
 .all_container {
   margin: auto;
   width: 82%;
+  /* height: 200px; */
 }
 
 .all_container1 {
@@ -284,27 +291,9 @@ nav {
 @media (max-width: 576px) {
   .flower_left {
     padding-left: 40px; 
-    padding-top: 230px;
+    padding-top: 280px;
   }
 }
-
-/* Mobile medium (small to medium devices) */
-@media (min-width: 576px) and (max-width: 768px) {
-  .flower_left {
-    padding-left: 40px;
-    padding-top: 300px;
-  }
-}
-
-/* Mobile large / tablet (large mobile and small tablet devices) */
-@media (min-width: 768px) and (max-width: 992px) {
-  .flower_left {
-    padding-left: 40px;
-    padding-top: 500px;
-  }
-}
-
-
 
 .f-wrapper {
   position: absolute;
