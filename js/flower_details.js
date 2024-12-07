@@ -73,7 +73,7 @@ async function displayFlowerDetails(flower) {
                     </button>
                 </div>  
                 <div class="col-12">
-                    <a class="btn btn-primary w-100" id="payment-button" target="_blank">
+                    <a class="btn btn-primary w-100" id="payment-button">
                       Payment
                     </a>
                 </div>
@@ -148,10 +148,10 @@ async function displayFlowerDetails(flower) {
   const orderExists = await CheckOrder(flower.id);
   const paymentButton = document.getElementById("payment-button");
 
-  paymentButton.addEventListener("click", async () => {
+  paymentButton.addEventListener("click", async (event) => {
+    event.preventDefault();
     if (orderExists) {
-      window.location.href =
-        "https://flower-seal-backend.vercel.app/payment/payment/";
+      window.open(`https://flower-seal-backend.vercel.app/payment/payment/${flower.id}/`, "_blank");
     } else {
       alert("You must order this flower before proceeding to payment.");
     }
@@ -304,14 +304,14 @@ const attachEditCommentHandlers = () => {
   const form = document.getElementById("comment-edit-form");
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
-  
+
     const commentId = form.getAttribute("data-editing-id");
     const updatedName = document.getElementById("edit-comment-name").value;
     const updatedBody = document.getElementById("edit-comment-body").value;
     const token = localStorage.getItem("authToken");
-  
+
     console.log("Token:", token);
-  
+
     try {
       const response = await fetch(
         `https://flower-seal-backend.vercel.app/flowers/comments/edit/${commentId}/`,
@@ -327,17 +327,17 @@ const attachEditCommentHandlers = () => {
           }),
         }
       );
-  
+
       const data = await response.json();
       console.log("API Response:", data);
-  
+
       if (response.ok) {
         const commentCard = document
           .querySelector(`[data-id="${commentId}"]`)
           .closest(".comment-card");
         commentCard.querySelector(".comment-name").textContent = updatedName;
         commentCard.querySelector(".comment-body").textContent = updatedBody;
-  
+
         const editFormSection = document.getElementById("edit-comment-form");
         editFormSection.style.display = "none";
       }
@@ -346,7 +346,6 @@ const attachEditCommentHandlers = () => {
       alert("Comment updated successfully!");
     }
   });
-  
 };
 
 // Delete comment
