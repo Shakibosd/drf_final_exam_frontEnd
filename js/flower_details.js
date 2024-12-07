@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
 //flower order function
 function order_flower(flower) {
   const userId = localStorage.getItem("user_id");
+  const token = localStorage.getItem("authToken");
   const button = document.getElementById("order_submit");
 
   button.addEventListener("click", () => {
@@ -25,6 +26,8 @@ function order_flower(flower) {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `token ${token}`,
+
         },
         body: JSON.stringify({
           user_id: parseInt(userId),
