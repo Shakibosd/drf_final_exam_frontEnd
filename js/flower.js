@@ -21,10 +21,10 @@ function fetchPosts() {
                 <p>Stock : ${post.stock}</p>
                 <div class="d-flex gap-3">
                   <div>
-                    <button class="btn btn-success" onclick="editPost(${post.id})">Edit</button>
+                    <button class="gradient-btn" style="text-decoration: none;" onclick="editPost(${post.id})">Edit</button>
                   </div>
                   <div>
-                    <button class="btn btn-danger" onclick="deletePost(${post.id})">Delete</button>
+                    <button class="gradient-btn-1" style="text-decoration: none;" onclick="deletePost(${post.id})">Delete</button>
                   </div>
                 </div>
               </div>

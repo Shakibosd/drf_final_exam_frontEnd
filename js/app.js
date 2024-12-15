@@ -16,13 +16,13 @@ const displayFlowers = (flowers) => {
       <div class="card bg-white text-dark pt-3 index_flower_card" style="border-radius: 15px;">
         <img src="${flower.image}" class="img-fluid mx-auto d-block" alt="${flower.title}" style="width:80%; height:210px; border-radius:10px;">
         <div class="card-body" style="height:230px;">
-          <h6 class="card-title">Title: ${flower.title}</h6>
+          <h6 class="card-title">Title : ${flower.title}</h6>
           <br>
-          <p>Price: ${flower.price} ৳</p>
-          <small>Category:</small>
-          <small class="btn btn-secondary btn-sm">${flower.category}</small>
+          <p>Price : ${flower.price} ৳</p>
+          <small>Category : </small>
+          <small class="gradient-btn-2 btn w-50">${flower.category}</small>
           <br><br>
-          <p class="card-text">Description: ${flower.description.slice(0, 20)}...</p>
+          <p class="card-text">Description : ${flower.description.slice(0, 20)}...</p>
         </div>
       </div>
     `;

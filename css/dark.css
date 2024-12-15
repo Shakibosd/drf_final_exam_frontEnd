@@ -15,6 +15,10 @@ body {
     color: #fff !important;
 }
 
+.dark-mode .navbar b {
+    color: #fff !important;
+}
+
 
 .dark-mode .footer {
     background-color: #333 !important;

@@ -1,10 +1,12 @@
-body {
-  background-color: whitesmoke !important;
+nav {
+  box-shadow: 4px 4px 8px rgb(128, 128, 128, 0.3);
 }
 
-nav {
-  box-shadow: 4px 4px 8px gray;
-  background-color: white !important;
+.nav_border:hover {
+  background-color: gray;
+  padding: 5px 10px;
+  border-radius: 20px;
+
 }
 
 #fixed_top {
@@ -16,7 +18,70 @@ nav {
 }
 
 .index_flower_card {
-  box-shadow: 4px 4px 8px gray;
+  box-shadow: 4px 4px 8px rgb(128, 128, 128, 0.3);
+}
+
+.gradient-btn {
+  color: #ffffff;
+  background-color: transparent;
+  background-image: linear-gradient(120deg, #1de9b6 20%, #1dc4e9 60%);
+  box-shadow: -25px 0px 20px -10px #1dc4e9 inset;
+  border-style: solid;
+  border-width: 0px;
+  border-color: #1de9b6;
+  border-radius: 30px;
+  padding: 10px 20px;
+}
+
+.gradient-btn-1 {
+  color: #ffffff;
+  background-color: transparent;
+  background-image: linear-gradient(120deg, #ff7e5f 20%, #feb47b 60%);
+  box-shadow: -25px 0px 20px -10px #feb47b inset;
+  border-style: solid;
+  border-width: 0px;
+  border-color: #ff7e5f;
+  border-radius: 30px;
+  padding: 10px 20px;
+}
+
+.gradient-btn-2 {
+  color: #ffffff;
+  background-color: transparent;
+  background-image: linear-gradient(120deg, #4e79a7 20%, #f28e2c 60%);
+  box-shadow: -25px 0px 20px -10px rgba(0, 0, 0, 0.2) inset;
+  border-style: solid;
+  border-width: 0px;
+  border-color: #90a4ae; 
+  border-radius: 30px;
+  padding: 10px 20px;
+  transition: all 0.3s ease; 
+}
+
+.gradient-btn:hover {
+  box-shadow: 0 8px 20px rgba(128, 128, 128, 0.7);
+}
+
+.gradient-btn-1:hover {
+  box-shadow: 0 8px 20px rgba(128, 128, 128, 0.7);
+}
+
+.gradient-btn-2:hover {
+  box-shadow: 0 8px 20px rgba(128, 128, 128, 0.7);
+}
+
+@media (min-width: 1012px) {
+  .btn-close {
+    margin-left: auto;
+    display: block;
+  }
+}
+
+@media (max-width: 576px) {
+  .btn-close {
+    margin-left: auto;
+    display: block;
+  }
 }
 
 .logo-img {
@@ -31,7 +96,7 @@ nav {
 
 @media (max-width: 576px) {
   .calimg {
-   height: 200px;
+    height: 200px;
   }
 }
 
@@ -290,7 +355,7 @@ nav {
 /* Mobile small (extra small devices) */
 @media (max-width: 576px) {
   .flower_left {
-    padding-left: 40px; 
+    padding-left: 40px;
     padding-top: 280px;
   }
 }

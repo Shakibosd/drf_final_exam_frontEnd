@@ -40,17 +40,17 @@ document.addEventListener("DOMContentLoaded", () => {
         flower.title
       }" style="width:80%; height:210px; border-radius:10px;">
           <div class="card-body">
-            <h6 class="card-title">Title: ${flower.title}</h6>
-            <p>Price: ${flower.price} ৳</p>
-            Category: <small class="btn btn-secondary btn-sm">${
+            <h6 class="card-title">Title : ${flower.title}</h6>
+            <p>Price : ${flower.price} ৳</p>
+            Category : <small class="btn btn-secondary btn-sm">${
               flower.category
             }</small>
-            <p>Stock: ${flower.stock}</p>
-            <p class="card-text">Description: ${flower.description.slice(
+            <p>Stock : ${flower.stock}</p>
+            <p class="card-text">Description : ${flower.description.slice(
               0,
               20
             )}...</p>
-            <a class="btn btn-primary btn-sm w-50" href="./flower_details.html?id=${
+            <a class="gradient-btn-1 w-50 btn" style="text-decoration: none; border-radius: 20px;" href="./flower_details.html?id=${
               flower.id
             }">Details</a>
           </div>
