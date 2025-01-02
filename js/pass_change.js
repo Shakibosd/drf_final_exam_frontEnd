@@ -10,7 +10,7 @@ document.getElementById("changePasswordForm")
 
     try {
       const response = await fetch(
-        "https://flower-seal-backend.vercel.app/profiles/pass_cng/",
+        "http://127.0.0.1:8000/profiles/pass_cng/",
         {
           method: "POST",
           headers: {

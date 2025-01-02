@@ -1,7 +1,7 @@
 //user er data
 document.addEventListener("DOMContentLoaded", () => {
   const user_id = localStorage.getItem("user_id");
-  const apiUrl = `https://flower-seal-backend.vercel.app/profiles/user/${user_id}/`;
+  const apiUrl = `http://127.0.0.1:8000/profiles/user/${user_id}/`;
   const token = localStorage.getItem("token");
 
   fetch(apiUrl, {
@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
-  fetch("https://flower-seal-backend.vercel.app/orders/my_orders/", {
+  fetch("http://127.0.0.1:8000/orders/my_orders/", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -78,11 +78,18 @@ document.addEventListener("DOMContentLoaded", () => {
       orderHistoryTable.innerHTML = "";
       data.forEach((order) => {
         const row = document.createElement("tr");
+        let statusClass = "";
+        if(order.status === "Completed"){
+          statusClass = "green-color";
+        }
+        else if(order.status === "Pending"){
+          statusClass = "red-color";
+        }
         row.innerHTML = `
           <th>${order.user}</th>  
           <td>${order.flower}</td>
           <td>${order.quantity}</td>
-          <td>${order.status}</td>
+          <td class="${statusClass}"><b>${order.status}</b></td>
           <td>${order.order_date}</td>
         `;
         orderHistoryTable.appendChild(row);

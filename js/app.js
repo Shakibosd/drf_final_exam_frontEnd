@@ -1,6 +1,6 @@
 //unauthentiacted landing page flower list show
 const loadFlowers = () => {
-  fetch("https://flower-seal-backend.vercel.app/flowers/flowers/")
+  fetch("http://127.0.0.1:8000/flowers/flowers/")
     .then((response) => response.json())
     .then((data) => displayFlowers(data))
     .catch((error) => console.log(error));
@@ -20,7 +20,7 @@ const displayFlowers = (flowers) => {
           <br>
           <p>Price : ${flower.price} ৳</p>
           <small>Category : </small>
-          <small class="gradient-btn-2 btn w-50">${flower.category}</small>
+          <small class="gradient-btn-2 w-50">${flower.category}</small>
           <br><br>
           <p class="card-text">Description : ${flower.description.slice(0, 20)}...</p>
         </div>

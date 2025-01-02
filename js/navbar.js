@@ -7,7 +7,7 @@ fetch("navbar.html")
     const token = localStorage.getItem("authToken");
 
     if (token) {
-      fetch("https://flower-seal-backend.vercel.app/admins/is_admin/", {
+      fetch("http://127.0.0.1:8000/admins/is_admin/", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -53,7 +53,7 @@ fetch("navbar.html")
     } else {
       navElement.innerHTML += `
         <h5><a class="nav_border" href="./index.html" style="text-decoration: none; color: black;"><b>Home</b></a></h5>
-        <h5><a class="nav_border" href="./register.html" style="text-decoration: none; color: black;"><b>Signup</b></a></h5>
+        <h5><a class="nav_border" href="./register.html" style="text-decoration: none; color: black;"><b>Register</b></a></h5>
         <h5><a class="nav_border" href="./contact_me.html" style="text-decoration: none; color: black;"><b>Contact</b></a></h5>
         <h5><a class="nav_border" href="./login.html" style="text-decoration: none; color: black;"><b>Login</b></a></h5>
         `;
