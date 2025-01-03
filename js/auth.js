@@ -57,7 +57,6 @@ const handleLogin = (event) => {
     username: formData.get("username"),
     password: formData.get("password"),
   };
-
   fetch("http://127.0.0.1:8000/users/login/", {
     method: "POST",
     headers: {
@@ -74,10 +73,11 @@ const handleLogin = (event) => {
     })
     .then((data) => {
       console.log("Auth token received:", data.token);
+      console.log("Auth id received:", data.user_id);
       localStorage.setItem("authToken", data.token);
       localStorage.setItem("user_id", data.user_id);
       alert("Login Successful!");
-      window.location.href = "./update_profile.html";
+      window.location.href = `./update_profile.html?user_id=${data.user_id}`;
     })
     .catch((err) => {
       console.log("Login error", err.message);

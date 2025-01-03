@@ -5,6 +5,7 @@ fetch("navbar.html")
 
     const navElement = document.getElementById("nav-element");
     const token = localStorage.getItem("authToken");
+    const user_id = localStorage.getItem("user_id");
 
     if (token) {
       fetch("http://127.0.0.1:8000/admins/is_admin/", {
@@ -19,7 +20,7 @@ fetch("navbar.html")
           if (result.is_admin) {
             navElement.innerHTML += `
             <h5><a href="./profile.html" class="nav_border" style="text-decoration: none; color: black;"><b>Home</b></a></h5>
-            <h5><a class="nav_border" style="text-decoration: none; color: black;" href="./update_profile.html"><b>Profile</b></a></h5>
+            <h5><a class="nav_border" style="text-decoration: none; color: black;" href="./update_profile.html?user_id=${user_id}"><b>Profile</b></a></h5>
             <h5>
               <a class="nav_border" href="./pass_change.html" style="text-decoration: none; color: black;"><b>Password Change</b></a>
             </h5>
@@ -44,7 +45,7 @@ fetch("navbar.html")
           } else {
             navElement.innerHTML += `
             <h5><a href="./profile.html" class="nav_border" style="text-decoration: none; color: black; "><b>Home</b></a></h5>
-            <h5><a class="nav_border" style="text-decoration: none; color: black;" href="./update_profile.html"><b>Profile</b></a></h5>
+            <h5><a class="nav_border" style="text-decoration: none; color: black;" href="./update_profile.html?user_id=${user_id}"><b>Profile</b></a></h5>
             <h5><a class="nav_border" href="./pass_change.html" style="text-decoration: none; color: black;"><b>Password Change</b></a></h5>
             <h5><a style="text-decoration: none; color: black;" onclick="handleLogout()"><b>Logout</b></a></h5>
             `;

@@ -142,9 +142,7 @@ async function displayFlowerDetails(flower) {
   paymentButton.addEventListener("click", async (event) => {
     event.preventDefault();
     if (orderExists) {
-      window.open(
-        `http://127.0.0.1:8000/payment/payment/${flower.id}/`,
-      );
+      window.open(`http://127.0.0.1:8000/payment/payment/${flower.id}/`);
     } else {
       alert("You must order this flower before proceeding to payment.");
     }
@@ -216,7 +214,6 @@ const post_comment = (flowerId) => {
   });
 };
 
-
 //comment get
 const get_comments = (postId) => {
   fetch(`http://127.0.0.1:8000/flowers/get_comment/${postId}/`)
@@ -229,38 +226,57 @@ const get_comments = (postId) => {
 
 // Comment display
 const displayComment = (comments) => {
-  console.log(comments);
   const commentCount = document.getElementById("comments-count");
   const commentdiv = document.getElementById("comments-list");
 
   commentCount.innerHTML = `${comments.length}`;
 
   let commentsHtml = comments
-    .map(
-      (comment) => `
+    .map((comment) => {
+      console.log("Logged-in user ID:", localStorage.getItem("user_id"));
+      const currentUserId = parseInt(localStorage.getItem("user_id")); 
+
+      const isOwner = currentUserId === comment.user.id; 
+
+      console.log("Comment User ID:", comment.user.id);
+      console.log("currentUserId:", currentUserId);
+      console.log("Comment User:", comment.user);
+      console.log("Is Owner?", currentUserId === comment.user.id);
+
+      const profileLink = `./update_profile.html?user_id=${comment.user.id}`;
+
+      return `
       <div class="col-md-4 col-lg-6 mb-4">
         <div class="card bg-white text-dark p-3 index_flower_card" style="border-radius: 10px;">
-          <h5>${comment.user}</h5> 
+          <h5>
+             <a href="${profileLink}" style="text-decoration: none; color: blue;">
+              ${comment.user.username}
+            </a>
+          </h5> 
           <p>${comment.body}</p>
           <small>${comment.created_on}</small>
           <br>
           <div class="d-flex gap-3">
-            <div>
-              <a class="gradient-btn edit-comment" data-id="${comment.id}"
-                data-body="${comment.body}" style="text-decoration: none;">Edit</a>
-            </div>
-            <div>
-              <a class="gradient-btn-1 delete-comment" data-id="${comment.id}" style="text-decoration: none;">Delete</a>
-            </div>
+            ${
+              isOwner
+                ? `
+              <div>
+                <a class="gradient-btn edit-comment" data-id="${comment.id}"
+                  data-body="${comment.body}" style="text-decoration: none;">Edit</a>
+              </div>
+              <div>
+                <a class="gradient-btn-1 delete-comment" data-id="${comment.id}" style="text-decoration: none;">Delete</a>
+              </div>
+            `
+                : ""
+            }
           </div>
         </div>
       </div>
-      `
-    )
+    `;
+    })
     .join("");
-
   commentdiv.innerHTML = `<div class="row">${commentsHtml}</div>`;
-
   attachEditCommentHandlers();
   attachDeleteCommentHandlers();
 };
