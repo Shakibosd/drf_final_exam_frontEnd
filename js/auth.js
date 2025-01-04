@@ -15,36 +15,69 @@ const togglePassword = (fieldId, iconElement) => {
 };
 
 // Register part
-const handleRegister = (event) => {
+const handleRegister = async (event) => {
   event.preventDefault();
   const form = document.getElementById("register-form");
   const formData = new FormData(form);
 
-  const registerData = {
-    username: formData.get("username"),
-    first_name: formData.get("first_name"),
-    last_name: formData.get("last_name"),
-    email: formData.get("email"),
-    password: formData.get("password"),
-    confirm_password: formData.get("confirm_password"),
-  };
+  const fileInput = document.getElementById("profile_img");
+  const imageFile = fileInput.files[0];
 
-  console.log("Registration data", registerData);
+  const imageUploadFormData = new FormData();
+  imageUploadFormData.append("image", imageFile); 
 
-  fetch("http://127.0.0.1:8000/users/register/", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(registerData),
-  })
-    .then((res) => {
-      alert(
-        "Registration Successful. Please check your email for a confirmation."
-      );
-      window.location.href = "./login.html";
-    })
-    .catch((error) => console.log("Registration Error", error));
+  try {
+    const imgbbResponse = await fetch(
+      "https://api.imgbb.com/1/upload?key=2bc3cad9a1fb82d25c2c1bb0ab49b035",
+      {
+        method: "POST",
+        body: imageUploadFormData,
+      }
+    );
+
+    const imgbbResult = await imgbbResponse.json();
+
+    if (imgbbResult.success) {
+      const imgbbUrl = imgbbResult.data.url;
+
+      const registerData = {
+        username: formData.get("username"),
+        first_name: formData.get("first_name"),
+        last_name: formData.get("last_name"),
+        email: formData.get("email"),
+        password: formData.get("password"),
+        confirm_password: formData.get("confirm_password"),
+        profile_img: imgbbUrl,
+      };
+
+      console.log("Registration data", registerData);
+
+      const response = await fetch("http://127.0.0.1:8000/users/register/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(registerData),
+      });
+
+      if (response.ok) {
+        alert(
+          "Registration Successful. Please check your email for a confirmation."
+        );
+        window.location.href = "./login.html";
+      } else {
+        const errorData = await response.json();
+        console.error("Register Failed:", errorData);
+        alert("Register Failed: " + errorData.message);
+      }
+    } else {
+      console.error("Image Upload Failed:", imgbbResult.error);
+      alert("Image Upload Failed, Please Try Again.");
+    }
+  } catch (error) {
+    console.error("Registration Error:", error);
+    alert("An Error Occurred During Registration, Please Try Again.");
+  }
 };
 
 // Login part

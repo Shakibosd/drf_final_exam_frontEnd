@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
           <div class="card-body">
             <h6 class="card-title">Title : ${flower.title}</h6>
             <p>Price : ${flower.price} ৳</p>
-            Category : <small class="btn btn-secondary btn-sm">${
+            Category : <small class="btn gradient-btn btn-sm">${
               flower.category
             }</small>
             <p>Stock : ${flower.stock}</p>
@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", function () {
         tipCard.classList.add("care-tip-card");
 
         tipCard.innerHTML = `
-                  <h2>Plant Name : ${tip.plant_name}</h2>
+                  <h2 class="text-primary">Plant Name : ${tip.plant_name}</h2>
                   <p><strong>Symptoms : </strong> ${tip.symptoms}</p>
                   <p><strong>Revival Steps : </strong> ${
                     tip.revival_steps

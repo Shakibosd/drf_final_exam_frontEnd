@@ -1,6 +1,5 @@
 //add new flower data
-document
-  .getElementById("create-post-form")
+document.getElementById("create-post-form")
   .addEventListener("submit", function (e) {
     e.preventDefault();
 

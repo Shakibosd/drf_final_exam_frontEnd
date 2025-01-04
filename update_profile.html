@@ -60,40 +60,38 @@
 
 
   <section>
-    <h1 class="text-center pt-4">Your Profile Page</h1>
-    <div class="container">
-      <div class="row">
-        <div class="col-12 col-md-4 mb-4 text-center">
-          <img src="images/profile.svg" alt="profile-img" class="img-fluid index_flower_card profile-img w-100"
-            style="border-radius: 20px;" />
-        </div>
-        <div class="col-12 col-md-8">
-          <br>
-          <div class="card p-4 index_flower_card" style="border-radius: 20px;">
-            <form class="row g-3" id="profile-form">
-              <div class="col-12">
-                <label for="username" class="form-label"><b>Username</b></label>
-                <input type="text" class="form-control text-dark" id="username" name="username" required />
-              </div>
-              <div class="col-md-6">
-                <label for="first_name" class="form-label"><b>First Name</b></label>
-                <input type="text" class="form-control text-dark" id="first_name" name="first_name" required />
-              </div>
-              <div class="col-md-6">
-                <label for="last_name" class="form-label"><b>Last Name</b></label>
-                <input type="text" class="form-control text-dark" id="last_name" name="last_name" required />
-              </div>
-              <div class="col-12">
-                <label for="email" class="form-label"><b>Email</b></label>
-                <input type="email" class="form-control text-dark" id="email" name="email" required />
-              </div>
-              <div class="col-12">
-                <button type="submit" class="gradient-btn w-100">
-                  <b>Update Profile</b>
-                </button>
-              </div>
-            </form>
-          </div>
+    <h1 class="text-center pt-4">Your Profile</h1>
+    <div class="d-flex justify-content-center align-items-center">
+      <div class="col-12 col-md-8">
+        <br>
+        <div class="card p-4 index_flower_card" style="border-radius: 20px;">
+          <form class="row g-3" id="profile-form">
+            <img id="profile-img" alt="Profile Image" class="img-fluid mx-auto"
+              style="width: 450px; height: 400px; border-radius: 50%;" />
+            <i class='bx bx-edit-alt' onclick="document.getElementById('fileInput').click();"></i>
+            <input type="file" id="fileInput" style="display: none;" accept="image/*" onchange="previewImage(event)">
+            <div class="col-12">
+              <label for="username" class="form-label"><b>Username</b></label>
+              <input type="text" class="form-control text-dark" id="username" name="username" required />
+            </div>
+            <div class="col-md-6">
+              <label for="first_name" class="form-label"><b>First Name</b></label>
+              <input type="text" class="form-control text-dark" id="first_name" name="first_name" required />
+            </div>
+            <div class="col-md-6">
+              <label for="last_name" class="form-label"><b>Last Name</b></label>
+              <input type="text" class="form-control text-dark" id="last_name" name="last_name" required />
+            </div>
+            <div class="col-12">
+              <label for="email" class="form-label"><b>Email</b></label>
+              <input type="email" class="form-control text-dark" id="email" name="email" required />
+            </div>
+            <div class="col-12">
+              <button type="submit" class="gradient-btn w-100">
+                <b>Update Profile</b>
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
@@ -113,7 +111,7 @@
   <script src="./js/update_profile.js"></script>
 
   <!-- check js -->
-  <!-- <script src="./js/check.js"></script> -->
+  <script src="./js/check.js"></script>
 
   <!-- dark -->
   <script src="./js/dark.js"></script>

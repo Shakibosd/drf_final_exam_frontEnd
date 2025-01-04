@@ -142,7 +142,7 @@ async function displayFlowerDetails(flower) {
   paymentButton.addEventListener("click", async (event) => {
     event.preventDefault();
     if (orderExists) {
-      window.open(`http://127.0.0.1:8000/payment/payment/${flower.id}/`);
+      window.location.href = `http://127.0.0.1:8000/payment/payment/${flower.id}/`;
     } else {
       alert("You must order this flower before proceeding to payment.");
     }
@@ -234,24 +234,20 @@ const displayComment = (comments) => {
   let commentsHtml = comments
     .map((comment) => {
       console.log("Logged-in user ID:", localStorage.getItem("user_id"));
-      const currentUserId = parseInt(localStorage.getItem("user_id")); 
+      const currentUserId = parseInt(localStorage.getItem("user_id"));
 
-      const isOwner = currentUserId === comment.user.id; 
+      const isOwner = currentUserId === comment.user.id;
 
       console.log("Comment User ID:", comment.user.id);
       console.log("currentUserId:", currentUserId);
       console.log("Comment User:", comment.user);
       console.log("Is Owner?", currentUserId === comment.user.id);
 
-      const profileLink = `./update_profile.html?user_id=${comment.user.id}`;
-
       return `
       <div class="col-md-4 col-lg-6 mb-4">
         <div class="card bg-white text-dark p-3 index_flower_card" style="border-radius: 10px;">
           <h5>
-             <a href="${profileLink}" style="text-decoration: none; color: blue;">
-              ${comment.user.username}
-            </a>
+              <a style="text-decoration: none;" href="./update_profile.html?user_id=${comment.user.id}">${comment.user.username}</a>
           </h5> 
           <p>${comment.body}</p>
           <small>${comment.created_on}</small>

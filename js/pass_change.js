@@ -1,25 +1,23 @@
-//user password change
 document.getElementById("changePasswordForm")
   .addEventListener("submit", async function (event) {
     event.preventDefault();
 
-    const oldPassword = document.getElementById("oldPassword").value;
-    const newPassword = document.getElementById("newPassword").value;
-    const authToken = localStorage.getItem("authToken");
-    console.log(authToken);
+    const new_password = document.getElementById("new_password").value;
+    const confirm_password = document.getElementById("confirm_password").value;
+    const token = localStorage.getItem("authToken");
 
     try {
       const response = await fetch(
-        "http://127.0.0.1:8000/profiles/pass_cng/",
+        "http://127.0.0.1:8000/pass_change/change_password/",
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Token ${authToken}`,
+            Authorization: `token ${token}`,
           },
           body: JSON.stringify({
-            old_password: oldPassword,
-            new_password: newPassword,
+            new_password: new_password,
+            confirm_password: confirm_password,
           }),
         }
       );
@@ -31,11 +29,11 @@ document.getElementById("changePasswordForm")
         window.location.href = "./update_profile.html";
         messageElement.classList.add("text-success");
         messageElement.classList.remove("text-danger");
+        messageElement.textContent = "Password changed successfully!";
       } else {
         const result = await response.json();
-        messageElement.textContent = result.old_password
-          ? result.old_password[0]
-          : "Error changing password!";
+        messageElement.textContent =
+          result.detail || "Error changing password!";
         messageElement.classList.add("text-danger");
         messageElement.classList.remove("text-success");
       }
@@ -46,4 +44,4 @@ document.getElementById("changePasswordForm")
       messageElement.classList.add("text-danger");
       messageElement.classList.remove("text-success");
     }
-});
+  });

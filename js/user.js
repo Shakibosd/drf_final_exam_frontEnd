@@ -1,7 +1,7 @@
 //user list show data
 function fetchUsers() {
   const token = localStorage.getItem("authToken");
-  fetch("http://127.0.0.1:8000/admins/user_list/", {
+  fetch("http://127.0.0.1:8000/users/user/", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -16,6 +16,7 @@ function fetchUsers() {
         let userCard = `
             <div class="user-card card mx-auto w-100 pt-2 index_flower_card" style="border-radius:20px;" id="user-${user.id}">
               <div class="m-3">
+                <img style="width: 450px; height: 400px; border-radius: 50%;" class="img-fluid mx-auto d-flex justify-content-center align-items-center" src="${user.profile_img}" alt="">
                 <h3>Username : ${user.username}</h3>
                 <p>First Name: ${user.first_name}</p>
                 <p>Last Name: ${user.last_name}</p>

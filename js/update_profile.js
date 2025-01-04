@@ -1,10 +1,9 @@
 //user er data
 document.addEventListener("DOMContentLoaded", () => {
-  const user_id = localStorage.getItem("user_id");
-  const apiUrl = `http://127.0.0.1:8000/profiles/user/${user_id}/`;
-  const token = localStorage.getItem("token");
+  const userId = localStorage.getItem("user_id");
+  const token = localStorage.getItem("authToken");
 
-  fetch(apiUrl, {
+  fetch(`http://127.0.0.1:8000/users/user/${userId}/`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -13,6 +12,13 @@ document.addEventListener("DOMContentLoaded", () => {
   })
     .then((response) => response.json())
     .then((data) => {
+      const newProfileImg = localStorage.getItem("new_profile_img");
+      if (newProfileImg) {
+        document.getElementById("profile-img").src = newProfileImg;
+      } else {
+        document.getElementById("profile-img").src = data.profile_img;
+      }
+
       document.getElementById("username").value = data.username;
       document.getElementById("first_name").value = data.first_name;
       document.getElementById("last_name").value = data.last_name;
@@ -20,33 +26,25 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .catch((error) => console.error("Error fetching profile data:", error));
 
-  const profileForm = document.getElementById("profile-form");
+  const fileInput = document.getElementById("fileInput");
+  fileInput.addEventListener("change", (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const formData = new FormData();
+      formData.append("image", file);
 
-
-  profileForm.addEventListener("submit", (event) => {
-    event.preventDefault();
-
-    const formData = {
-      username: document.getElementById("username").value,
-      first_name: document.getElementById("first_name").value,
-      last_name: document.getElementById("last_name").value,
-      email: document.getElementById("email").value,
-    };
-
-    fetch(apiUrl, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify(formData),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        alert("Profile updated successfully");
+      fetch("https://api.imgbb.com/1/upload?key=2bc3cad9a1fb82d25c2c1bb0ab49b035", {
+        method: "POST",
+        body: formData,
       })
-      .catch((error) => console.error("Error updating profile:", error));
+        .then((response) => response.json())
+        .then((data) => {
+          const imageUrl = data.data.url;
+          document.getElementById("profile-img").src = imageUrl;
+          localStorage.setItem("new_profile_img", imageUrl); 
+        })
+        .catch((error) => console.error("Error uploading image:", error));
+    }
   });
 });
 
@@ -79,10 +77,9 @@ document.addEventListener("DOMContentLoaded", () => {
       data.forEach((order) => {
         const row = document.createElement("tr");
         let statusClass = "";
-        if(order.status === "Completed"){
+        if (order.status === "Completed") {
           statusClass = "green-color";
-        }
-        else if(order.status === "Pending"){
+        } else if (order.status === "Pending") {
           statusClass = "red-color";
         }
         row.innerHTML = `
