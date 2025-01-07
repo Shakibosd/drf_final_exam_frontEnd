@@ -261,7 +261,7 @@ const displayComment = (comments) => {
                   data-body="${comment.body}" style="text-decoration: none;">Edit</a>
               </div>
               <div>
-                <a class="gradient-btn-1 delete-comment" data-id="${comment.id}" style="text-decoration: none;">Delete</a>
+                <a class="gradient-btn-1 delete-comment" data-id="${comment.id}" style="text-decoration: none;"><img src="./images/basic-ui.png" style="width: 30px; height: 20px;"></a>
               </div>
             `
                 : ""

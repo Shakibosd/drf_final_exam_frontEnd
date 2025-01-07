@@ -57,9 +57,9 @@ document.addEventListener("DOMContentLoaded", () => {
                   }">Details</a>
               </div>
               <div>
-                <button class="btn btn-primary add-to-cart-btn" onclick="addToCart(${
+                <a class="gradient-btn btn add-to-cart-btn" style="text-decoration: none; border-radius: 20px;" onclick="addToCart(${
                   flower.id
-                })">Add to Cart</button>
+                })">Add to Cart</a>
               </div>
             </div>
           </div>
