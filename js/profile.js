@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
       .catch((error) => console.error("Error fetching flowers:", error));
   }
 
-  //flower display
+  // Flower display
   function displayFlowers(flowers) {
     const flowerContainer = document.getElementById("flower-container");
     flowerContainer.innerHTML = "";
@@ -50,9 +50,18 @@ document.addEventListener("DOMContentLoaded", () => {
               0,
               20
             )}...</p>
-            <a class="gradient-btn-1 w-50 btn" style="text-decoration: none; border-radius: 20px;" href="./flower_details.html?id=${
-              flower.id
-            }">Details</a>
+            <div class="d-flex gap-3">
+              <div>
+                  <a class="gradient-btn-1 btn" style="text-decoration: none; border-radius: 20px;" href="./flower_details.html?id=${
+                    flower.id
+                  }">Details</a>
+              </div>
+              <div>
+                <button class="btn btn-primary add-to-cart-btn" onclick="addToCart(${
+                  flower.id
+                })">Add to Cart</button>
+              </div>
+            </div>
           </div>
         </div>
       `;
@@ -82,14 +91,22 @@ document.addEventListener("DOMContentLoaded", function () {
         tipCard.innerHTML = `
                   <h2 class="text-primary">Plant Name : ${tip.plant_name}</h2>
                   <p><strong>Symptoms : </strong> ${tip.symptoms}</p>
-                  <p><strong>Revival Steps : </strong> ${
-                    tip.revival_steps
+                  <p><strong>Revival Steps : </strong> ${tip.revival_steps}</p>
+                  <p><strong>Recommended Fertilizer : </strong> ${
+                    tip.recommended_fertilizer
                   }</p>
-                  <p><strong>Recommended Fertilizer : </strong> ${tip.recommended_fertilizer}</p>
-                  <p><strong>Watering Caution : </strong> ${tip.watering_caution}</p>
-                  <p><strong>Sunlight Adjustment : </strong> ${tip.sunlight_adjustment}</p>
-                  <p><strong>Sunlightn Needs : </strong> ${tip.sunlight_needs}</p>
-                  <p><strong>Recommended Water Frequency : </strong> ${tip.recommended_water_frequency}</p>
+                  <p><strong>Watering Caution : </strong> ${
+                    tip.watering_caution
+                  }</p>
+                  <p><strong>Sunlight Adjustment : </strong> ${
+                    tip.sunlight_adjustment
+                  }</p>
+                  <p><strong>Sunlightn Needs : </strong> ${
+                    tip.sunlight_needs
+                  }</p>
+                  <p><strong>Recommended Water Frequency : </strong> ${
+                    tip.recommended_water_frequency
+                  }</p>
                   <p><strong>Created At : </strong> ${tip.created_at}</p>
                   <p><strong>Updated At : </strong> ${tip.updated_at}</p>
                   <p class="special-notes"><strong>Special Notes : </strong> ${

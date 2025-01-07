@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -10,42 +10,46 @@
     <!-- css linkup -->
     <link rel="stylesheet" href="./css/style.css" />
     <link rel="stylesheet" href="./css/dark.css" />
+
     <!-- my web title -->
-    <title>User</title>
+    <title>Product Cart</title>
     <!-- bootstrap cdn -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
-    <!-- boxines icon -->
+    <!-- boxines icon     -->
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
 </head>
 
 <body>
     <!-- Navbar -->
-    <div id="navbar"></div>
-    <script src="./js/navbar.js"></script>
+    <header>
+        <div id="navbar"></div>
+        <script src="./js/navbar.js"></script>
+    </header>
 
+    <main>
+        <div class="container" style="padding-top: 130px;">
+            <h2 class="text-center mb-5">Cart Items</h2>
+            <div id="cart-items" class="row gy-4">
 
-    <section style="padding-top: 150px;">
-        <h1 class="text-center">User List</h1>
-        <div id="user-list" class="container"></div>
-    </section>
+            </div>
+        </div>
+
+        <div id="flower-list">
+
+        </div>
+    </main>
 
     <!-- Footer -->
     <footer>
-        <div id="footer" class="pt-4"></div>
+        <div id="footer" class="pt-3"></div>
         <script src="./js/footer.js"></script>
     </footer>
 
     <!-- Auth Js -->
-    <script src="./js/auth.js"></script>
+    <script src="./js/cart.js"></script>
 
-    <!-- profile update -->
-    <script src="./js/user.js"></script>
-
-    <!-- check js -->
-    <script src="./js/check1.js"></script>
-
-    <!-- dark -->
+    <!-- dark js -->
     <script src="./js/dark.js"></script>
 
     <!-- bootstrap scripts -->

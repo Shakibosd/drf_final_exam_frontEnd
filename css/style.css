@@ -9,6 +9,10 @@ nav {
 
 }
 
+body {
+  background-color: whitesmoke !important;
+}
+
 #fixed_top {
   position: fixed;
   top: 0;
@@ -669,4 +673,9 @@ nav {
 
 .red-color {
   color: red;
+}
+
+.none {
+  color: #ff7fc2;
+  text-decoration: none;
 }
