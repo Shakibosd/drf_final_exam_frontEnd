@@ -1,18 +1,26 @@
 const addToCart = (flower_id) => {
   const token = localStorage.getItem("authToken");
+  if (!token) {
+    alert("User not authenticated!");
+    return;
+  }
+
+  console.log("token : ", token);
+  console.log("flower_id : ", flower_id);
+
   fetch("http://127.0.0.1:8000/flowers/cart/", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       Authorization: `token ${token}`,
     },
-    body: JSON.stringify({ flowerId: flower_id }),
+    body: JSON.stringify({ flower: flower_id, quantity: 1 }),
   })
     .then(async (res) => {
       if (!res.ok) {
         const data = await res.json();
         console.log(data);
-        throw new Error("Failed To Add To Cart");
+        throw new Error(data.detail || "Failed To Add To Cart");
       }
       return res.json();
     })
@@ -21,13 +29,25 @@ const addToCart = (flower_id) => {
       alert("Flower added to cart successfully!");
     })
     .catch((err) => {
-      console.log("Error adding to cart", err);
-      alert("Failed To Add To Cart");
+      console.log("Error adding to cart", err.message);
+      alert(err.message || "Failed To Add To Cart");
     });
 };
 
 const fetchCartItems = () => {
+  const cartContainer = document.getElementById("cart-items");
+
+  if (!cartContainer) {
+    console.log("Cart container not found!");
+    return;
+  }
+
   const token = localStorage.getItem("authToken");
+
+  if (!token) {
+    alert("User not authenticated!");
+    return;
+  }
 
   fetch("http://127.0.0.1:8000/flowers/cart/", {
     method: "GET",
@@ -45,8 +65,7 @@ const fetchCartItems = () => {
       return res.json();
     })
     .then((data) => {
-      console.log(data);
-      const cartContainer = document.getElementById("cart-items");
+      console.log("Fetched cart items:", data);
 
       if (data.length === 0) {
         cartContainer.innerHTML =
@@ -76,11 +95,11 @@ const fetchCartItems = () => {
       });
     })
     .catch((err) => {
-      console.log("Error Fetching Cart Items", err);
-      alert("Failed To Fetch Cart Items");
+      console.log("Error Fetching Cart Items", err.message);
+      alert(err.message || "Failed To Fetch Cart Items");
     });
 };
 
-// Call the function
-fetchCartItems();
-addToCart();
+document.addEventListener("DOMContentLoaded", () => {
+  fetchCartItems();
+});
