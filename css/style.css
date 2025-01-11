@@ -349,10 +349,10 @@ body {
 }
 
 /* Desktop view */
-@media (min-width: 1200px) {
+@media (min-width: 1096px) {
   .flower_left {
     padding-left: 240px;
-    padding-top: 540px;
+    padding-top: 600px;
   }
 }
 

@@ -24,7 +24,7 @@ const handleRegister = async (event) => {
   const imageFile = fileInput.files[0];
 
   const imageUploadFormData = new FormData();
-  imageUploadFormData.append("image", imageFile); 
+  imageUploadFormData.append("image", imageFile);
 
   try {
     const imgbbResponse = await fetch(
@@ -105,12 +105,16 @@ const handleLogin = (event) => {
       return res.json();
     })
     .then((data) => {
-      console.log("Auth token received:", data.token);
-      console.log("Auth id received:", data.user_id);
+      console.log("Auth Token Received : ", data.token);
+      console.log("Auth Id Received : ", data.user_id);
+      console.log("Auth Username Reveived : ", loginData.username);
+
       localStorage.setItem("authToken", data.token);
       localStorage.setItem("user_id", data.user_id);
+      localStorage.setItem("username", loginData.username);
+
       alert("Login Successful!");
-      window.location.href = `./update_profile.html?user_id=${data.user_id}`;
+      window.location.href = `./update_profile.html?YourUserName=${loginData.username}`;
     })
     .catch((err) => {
       console.log("Login error", err.message);

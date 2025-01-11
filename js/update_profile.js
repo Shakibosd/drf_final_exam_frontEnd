@@ -15,8 +15,11 @@ document.addEventListener("DOMContentLoaded", () => {
       const newProfileImg = localStorage.getItem("new_profile_img");
       if (newProfileImg) {
         document.getElementById("profile-img").src = newProfileImg;
-      } else {
+      } else if (data.profile_img) {
         document.getElementById("profile-img").src = data.profile_img;
+      } else {
+        document.getElementById("profile-img").src =
+          "default-profile-image-url";
       }
 
       document.getElementById("username").value = data.username;
@@ -33,18 +36,49 @@ document.addEventListener("DOMContentLoaded", () => {
       const formData = new FormData();
       formData.append("image", file);
 
-      fetch("https://api.imgbb.com/1/upload?key=2bc3cad9a1fb82d25c2c1bb0ab49b035", {
-        method: "POST",
-        body: formData,
-      })
+      fetch(
+        "https://api.imgbb.com/1/upload?key=2bc3cad9a1fb82d25c2c1bb0ab49b035",
+        {
+          method: "POST",
+          body: formData,
+        }
+      )
         .then((response) => response.json())
         .then((data) => {
           const imageUrl = data.data.url;
           document.getElementById("profile-img").src = imageUrl;
-          localStorage.setItem("new_profile_img", imageUrl); 
+          localStorage.setItem("new_profile_img", imageUrl);
         })
         .catch((error) => console.error("Error uploading image:", error));
     }
+  });
+
+  const profileForm = document.getElementById("profile-form");
+  profileForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const updatedProfileData = {
+      username: document.getElementById("username").value,
+      first_name: document.getElementById("first_name").value,
+      last_name: document.getElementById("last_name").value,
+      email: document.getElementById("email").value,
+      profile_img: document.getElementById("profile-img").src,
+    };
+
+    fetch(`http://127.0.0.1:8000/users/user/${userId}/`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(updatedProfileData),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        alert("Profile updated successfully!");
+      })
+      .catch((error) => console.error("Error updating profile:", error));
   });
 });
 

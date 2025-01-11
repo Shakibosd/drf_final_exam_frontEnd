@@ -28,28 +28,30 @@
   <section>
     <div class="container" style="padding-top: 70px;">
       <div class="py-5"></div>
-      <div class="card index_flower_card text-center p-4" style="border-radius: 20px; line-height: 39px;">
+      <div class="text-center p-4" style="border-radius: 20px; line-height: 39px;">
         <div class="table-responsive">
-          <table class="container">
-            <tr>
-              <th>
-                <h4>User</h4>
-              </th>
-              <th>
-                <h4>Flower</h4>
-              </th>
-              <th>
-                <h4>Quantity</h4>
-              </th>
-              <th>
-                <h4>Status</h4>
-              </th>
-              <th>
-                <h4>Order Date</h4>
-              </th>
-            </tr>
-
+          <table class="index_flower_card table table-bordered table-hover">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">
+                  <h5>User</h5>
+                </th>
+                <th scope="col">
+                  <h5>Flower</h5>
+                </th>
+                <th scope="col">
+                  <h5>Quantity</h5>
+                </th>
+                <th scope="col">
+                  <h5>Status</h5>
+                </th>
+                <th scope="col">
+                  <h5>Order Date</h5>
+                </th>
+              </tr>
+            </thead>
             <tbody id="order-history">
+              <!-- Dynamic rows will be injected here -->
             </tbody>
           </table>
         </div>

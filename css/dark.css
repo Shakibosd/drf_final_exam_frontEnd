@@ -164,3 +164,35 @@ body.dark-mode .form-control {
     color: white;
     border: 1px solid #444;
 }
+
+/* Default Light Mode Styles */
+body {
+    background-color: #fff;
+    color: #333;
+}
+
+.navbar,
+.footer {
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+.table-bordered {
+    border-color: #ddd;
+}
+
+body.dark-mode .navbar,
+body.dark-mode .footer {
+    background-color: #333;
+    color: #fff;
+}
+
+body.dark-mode .table-bordered {
+    border-color: #555;
+}
+
+body.dark-mode .table th,
+body.dark-mode .table td {
+    color: #fff;
+    background-color: #333;
+}

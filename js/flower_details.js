@@ -236,7 +236,7 @@ const displayComment = (comments) => {
       console.log("Logged-in user ID:", localStorage.getItem("user_id"));
       const currentUserId = parseInt(localStorage.getItem("user_id"));
 
-      const isOwner = currentUserId === comment.user.id;
+      const isOwner = currentUserId === comment.user.username;
 
       console.log("Comment User ID:", comment.user.id);
       console.log("currentUserId:", currentUserId);
@@ -247,7 +247,7 @@ const displayComment = (comments) => {
       <div class="col-md-4 col-lg-6 mb-4">
         <div class="card bg-white text-dark p-3 index_flower_card" style="border-radius: 10px;">
           <h5>
-              <a style="text-decoration: none;" href="./update_profile.html?user_id=${comment.user.id}">${comment.user.username}</a>
+              <a style="text-decoration: none;" href="./update_profile.html?user=${comment.user.username}">${comment.user.username}</a>
           </h5> 
           <p>${comment.body}</p>
           <small>${comment.created_on}</small>

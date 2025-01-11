@@ -27,9 +27,27 @@
         <script src="./js/navbar.js"></script>
     </header>
 
+    <style>
+        @media (max-width: 767px) {
+
+            .table th,
+            .table td {
+                padding: 8px;
+            }
+
+            .container {
+                padding-top: 50px;
+            }
+
+            .mob-t-body {
+                padding-top: 80px;
+            }
+        }
+    </style>
+
     <main>
         <div class="container" style="padding-top: 130px;">
-            <h2 class="text-center mt-3">Cart Items</h2>
+            <h2 class="text-center mob-t-body">Cart Items</h2>
             <b>
                 <p id="total-quantity" class="text-center mb-2"></p>
             </b>
@@ -37,26 +55,25 @@
                 <p id="total-price" class="text-center mb-2"></p>
             </b>
 
-            <table class="table table-bordered mt-3">
-                <thead>
-                    <tr>
-                        <th scope="col">Sl No.</th>
-                        <th scope="col">Flower Image</th>
-                        <th scope="col">Flower Title</th>
-                        <th scope="col">Price</th>
-                        <th scope="col">Description</th>
-                        <th scope="col">Stock</th>
-                        <th scope="col">Category</th>
-                        <th scope="col">Action</th>
-                    </tr>
-                </thead>
-                <tbody id="cart-items">
-           
-                </tbody>
-            </table>
+            <div class="table-responsive">
+                <table class="table table-bordered mt-3">
+                    <thead>
+                        <tr>
+                            <th scope="col">Sl No.</th>
+                            <th scope="col">Flower Image</th>
+                            <th scope="col">Flower Title</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Stock</th>
+                            <th scope="col">Category</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cart-items"></tbody>
+                </table>
+            </div>
         </div>
     </main>
-
 
     <!-- Footer -->
     <footer>
