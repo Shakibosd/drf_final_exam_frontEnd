@@ -68,7 +68,7 @@ async function displayFlowerDetails(flower) {
       <br>
       <div class="row g-3 d-flex justify-content-center align-items-center">
         <div class="col-12 col-md-6 col-lg-3">
-          <a href="./authenticated_user.html" class="gradient-btn-1 btn w-100" style="text-decoration: none;">Back To Profile</a>
+          <a href="./authenticated_user.html" class="gradient-btn-1 btn w-100" style="text-decoration: none;">Back To Auth Home</a>
         </div>
         <div class="col-12 col-md-6 col-lg-3">
           <button type="button" class="gradient-btn btn w-100" style="text-decoration: none;" data-bs-toggle="modal"
