@@ -30,8 +30,10 @@
     }
   </style>
   <!-- Navbar -->
-  <div id="navbar"></div>
-  <script src="./js/navbar.js"></script>
+  <header>
+    <div id="navbar"></div>
+    <script src="./js/navbar.js"></script>
+  </header>
 
   <!-- Login -->
   <div class="d-flex container flex-wrap-login gap-5 align-items-center justify-content-center"
@@ -44,8 +46,8 @@
       <form class="p-5" onsubmit="handleLogin(event)" id="login-form">
         <div>
           <label for="username" class="form-label"><b>Username</b></label>
-          <input type="text" value="flowersealadmin" class="form-control" id="username" name="username" placeholder="Please Enter Your Username"
-            required />
+          <input type="text" value="flowersealadmin" class="form-control" id="username" name="username"
+            placeholder="Please Enter Your Username" required />
         </div>
         <br>
         <div>

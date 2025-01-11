@@ -10,9 +10,8 @@
   <!-- css linkup -->
   <link rel="stylesheet" href="./css/style.css" />
   <link rel="stylesheet" href="./css/dark.css" />
-
   <!-- my web title -->
-  <title>SignUp Page</title>
+  <title>Register Page</title>
   <!-- bootstrap cdn -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
@@ -22,8 +21,10 @@
 
 <body>
   <!-- Navbar -->
-  <div id="navbar"></div>
-  <script src="./js/navbar.js"></script>
+  <header>
+    <div id="navbar"></div>
+    <script src="./js/navbar.js"></script>
+  </header>
 
   <style>
     @media (max-width: 767px) {
@@ -41,12 +42,12 @@
         alt="Register Image" />
     </div>
     <div class="col-12 col-md-6 p-4 card index_flower_card" style="border-radius: 20px;">
-      <!-- <div>
+      <div>
         <a href="./hr_login.html" type="submit" class="w-100 gradient-btn text-center" style="text-decoration: none;">
           <b>Hr Login</b>
         </a>
       </div>
-      <br> -->
+      <br>
       <form class="row g-3" onsubmit="handleRegister(event)" id="register-form">
         <div>
           <label for="username" class="form-label"><b>Username</b></label>

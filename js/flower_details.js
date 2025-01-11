@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const urlParams = new URLSearchParams(window.location.search);
   const flowerId = urlParams.get("id");
 
-  fetch(`http://127.0.0.1:8000/flowers/flowers/${flowerId}/`)
+  fetch(`https://flower-seal-backend.vercel.app/flowers/flowers/${flowerId}/`)
     .then((response) => response.json())
     .then((data) => {
       displayFlowerDetails(data);
@@ -22,7 +22,7 @@ function order_flower(flower) {
     const product_quantity = parseInt(input.value);
 
     if (product_quantity <= flower.stock) {
-      fetch("http://127.0.0.1:8000/orders/create_order/", {
+      fetch("https://flower-seal-backend.vercel.app/orders/create_order/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -142,7 +142,7 @@ async function displayFlowerDetails(flower) {
   paymentButton.addEventListener("click", async (event) => {
     event.preventDefault();
     if (orderExists) {
-      window.location.href = `http://127.0.0.1:8000/payment/payment/${flower.id}/`;
+      window.location.href = `https://flower-seal-backend.vercel.app/payment/payment/${flower.id}/`;
     } else {
       alert("You must order this flower before proceeding to payment.");
     }
@@ -157,7 +157,7 @@ const CheckOrder = async (flowerId) => {
   const token = localStorage.getItem("authToken");
   try {
     const response = await fetch(
-      `http://127.0.0.1:8000/flowers/check_order/?flowerId=${flowerId}`,
+      `https://flower-seal-backend.vercel.app/flowers/check_order/?flowerId=${flowerId}`,
       {
         method: "GET",
         headers: {
@@ -191,7 +191,7 @@ const post_comment = (flowerId) => {
 
     // const username = document.getElementById("name").value;
     const usertext = document.getElementById("text").value;
-    fetch("http://127.0.0.1:8000/flowers/comments_api/", {
+    fetch("https://flower-seal-backend.vercel.app/flowers/comments_api/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -216,7 +216,7 @@ const post_comment = (flowerId) => {
 
 //comment get
 const get_comments = (postId) => {
-  fetch(`http://127.0.0.1:8000/flowers/get_comment/${postId}/`)
+  fetch(`https://flower-seal-backend.vercel.app/flowers/get_comment/${postId}/`)
     .then((res) => res.json())
     .then((data) => {
       console.log(data);
@@ -318,7 +318,7 @@ const attachEditCommentHandlers = () => {
 
     try {
       const response = await fetch(
-        `http://127.0.0.1:8000/flowers/comments/edit/${commentId}/`,
+        `https://flower-seal-backend.vercel.app/flowers/comments/edit/${commentId}/`,
         {
           method: "PUT",
           headers: {
@@ -361,7 +361,7 @@ const attachDeleteCommentHandlers = () => {
       const commentId = button.getAttribute("data-id");
 
       if (confirm("Are you sure you want to delete this comment?")) {
-        fetch(`http://127.0.0.1:8000/flowers/comments_api/${commentId}/`, {
+        fetch(`https://flower-seal-backend.vercel.app/flowers/comments_api/${commentId}/`, {
           method: "DELETE",
           headers: {
             "Content-Type": "application/json",
