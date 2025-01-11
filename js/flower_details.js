@@ -38,12 +38,11 @@ function order_flower(flower) {
         .then((response) => {
           console.log("Order placed successfully : ", response);
           alert("Order Placed Successfully And Check Your Email");
-          window.location.href = "./update_profile.html";
+          window.location.href = "./profile.html";
         })
         .catch((error) => {
           console.log("Order error", error);
           alert("Error placing order");
-          // window.location.href = "./update_profile.html";
         });
     } else {
       console.log("Insufficient stock");
@@ -189,7 +188,6 @@ const post_comment = (flowerId) => {
       return;
     }
 
-    // const username = document.getElementById("name").value;
     const usertext = document.getElementById("text").value;
     fetch("https://flower-seal-backend.vercel.app/flowers/comments_api/", {
       method: "POST",
@@ -199,7 +197,6 @@ const post_comment = (flowerId) => {
       },
       body: JSON.stringify({
         flowerId: flowerId,
-        // names: username,
         comment: usertext,
       }),
     })
@@ -288,13 +285,8 @@ const attachEditCommentHandlers = () => {
       const button = event.target;
 
       const commentId = button.getAttribute("data-id");
-      // const commentName = button.getAttribute("data-name");
       const commentBody = button.getAttribute("data-body");
-
-      // const nameInput = document.getElementById("edit-comment-name");
       const textInput = document.getElementById("edit-comment-body");
-
-      // nameInput.value = commentName;
       textInput.value = commentBody;
 
       const commentForm = document.getElementById("comment-edit-form");
@@ -310,7 +302,6 @@ const attachEditCommentHandlers = () => {
     event.preventDefault();
 
     const commentId = form.getAttribute("data-editing-id");
-    // const updatedName = document.getElementById("edit-comment-name").value;
     const updatedBody = document.getElementById("edit-comment-body").value;
     const token = localStorage.getItem("authToken");
 
@@ -326,7 +317,6 @@ const attachEditCommentHandlers = () => {
             Authorization: `token ${token}`,
           },
           body: JSON.stringify({
-            // name: updatedName,
             body: updatedBody,
           }),
         }
@@ -339,7 +329,6 @@ const attachEditCommentHandlers = () => {
         const commentCard = document
           .querySelector(`[data-id="${commentId}"]`)
           .closest(".comment-card");
-        // commentCard.querySelector(".comment-name").textContent = updatedName;
         commentCard.querySelector(".comment-body").textContent = updatedBody;
 
         const editFormSection = document.getElementById("edit-comment-form");
