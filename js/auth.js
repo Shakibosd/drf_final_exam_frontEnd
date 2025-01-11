@@ -114,7 +114,7 @@ const handleLogin = (event) => {
       localStorage.setItem("username", loginData.username);
 
       alert("Login Successful!");
-      window.location.href = `./update_profile.html?YourUserName=${loginData.username}`;
+      window.location.href = `./profile.html?YourUserName=${loginData.username}`;
     })
     .catch((err) => {
       console.log("Login error", err.message);

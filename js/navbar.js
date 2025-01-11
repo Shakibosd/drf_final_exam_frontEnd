@@ -19,8 +19,9 @@ fetch("navbar.html")
         .then((result) => {
           if (result.is_admin) {
             navElement.innerHTML += `
-            <h5><a href="./profile.html" class="nav_border" style="text-decoration: none; color: black;"><b>Home</b></a></h5>
-            <h5><a class="nav_border" style="text-decoration: none; color: black;" href="./update_profile.html?YourUserName=${username}"><b>Profile</b></a></h5>
+            <h5><a href="./authenticated_user.html" class="nav_border" style="text-decoration: none; color: black;"><b>Home</b></a></h5>
+            <h5><a class="nav_border" style="text-decoration: none; color: black;" href="./profile.html?YourUserName=${username}"><b>Profile</b></a></h5>
+            <h5><a class="nav_border" style="text-decoration: none; color: black;" href="./order_history.html"><b>Order History</b></a></h5>
             <h4><a href="./cart.html" class="nav_border" style="text-decoration: none; color: black;"><b><i class='bx bx-cart'></i></b></a></h4>
             <h5>
               <div class="dropdown">
@@ -42,8 +43,9 @@ fetch("navbar.html")
             `;
           } else {
             navElement.innerHTML += `
-            <h5><a href="./profile.html" class="nav_border" style="text-decoration: none; color: black; "><b>Home</b></a></h5>
-            <h5><a class="nav_border" style="text-decoration: none; color: black;" href="./update_profile.html?YourUserName=${username}"><b>Profile</b></a></h5>
+            <h5><a href="./authenticated_user.html" class="nav_border" style="text-decoration: none; color: black; "><b>Home</b></a></h5>
+            <h5><a class="nav_border" style="text-decoration: none; color: black;" href="./profile.html?YourUserName=${username}"><b>Profile</b></a></h5>
+            <h5><a class="nav_border" style="text-decoration: none; color: black;" href="./order_history.html"><b>Order History</b></a></h5>
             <h4><a href="./cart.html" class="nav_border" style="text-decoration: none; color: black;"><b><i class='bx bx-cart'></i></b></a></h4>
             <h5><a style="text-decoration: none; color: black;" onclick="handleLogout()"><b>Logout</b></a></h5>
             `;

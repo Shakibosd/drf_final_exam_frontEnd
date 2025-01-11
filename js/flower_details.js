@@ -68,7 +68,7 @@ async function displayFlowerDetails(flower) {
       <br>
       <div class="row g-3 d-flex justify-content-center align-items-center">
         <div class="col-12 col-md-6 col-lg-3">
-          <a href="./profile.html" class="gradient-btn-1 btn w-100" style="text-decoration: none;">Back To Profile</a>
+          <a href="./authenticated_user.html" class="gradient-btn-1 btn w-100" style="text-decoration: none;">Back To Profile</a>
         </div>
         <div class="col-12 col-md-6 col-lg-3">
           <button type="button" class="gradient-btn btn w-100" style="text-decoration: none;" data-bs-toggle="modal"
@@ -236,18 +236,18 @@ const displayComment = (comments) => {
       console.log("Logged-in user ID:", localStorage.getItem("user_id"));
       const currentUserId = parseInt(localStorage.getItem("user_id"));
 
-      const isOwner = currentUserId === comment.user.username;
+      const isOwner = currentUserId === comment.user.id;
 
       console.log("Comment User ID:", comment.user.id);
       console.log("currentUserId:", currentUserId);
       console.log("Comment User:", comment.user);
-      console.log("Is Owner?", currentUserId === comment.user.id);
+      console.log("Is Owner?", isOwner);
 
       return `
       <div class="col-md-4 col-lg-6 mb-4">
         <div class="card bg-white text-dark p-3 index_flower_card" style="border-radius: 10px;">
           <h5>
-              <a style="text-decoration: none;" href="./update_profile.html?user=${comment.user.username}">${comment.user.username}</a>
+              <a style="text-decoration: none;">${comment.user.username}</a>
           </h5> 
           <p>${comment.body}</p>
           <small>${comment.created_on}</small>
@@ -272,7 +272,9 @@ const displayComment = (comments) => {
     `;
     })
     .join("");
+
   commentdiv.innerHTML = `<div class="row">${commentsHtml}</div>`;
+
   attachEditCommentHandlers();
   attachDeleteCommentHandlers();
 };

@@ -10,57 +10,57 @@
     <!-- css linkup -->
     <link rel="stylesheet" href="./css/style.css" />
     <link rel="stylesheet" href="./css/dark.css" />
-
     <!-- my web title -->
-    <title>Product Info</title>
+    <title>Order History</title>
     <!-- bootstrap cdn -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
     <!-- boxines icon -->
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
-
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
     <!-- Navbar -->
-    <div id="navbar"></div>
-    <script src="./js/navbar.js"></script>
+    <header>
+        <div id="navbar"></div>
+        <script src="./js/navbar.js"></script>
+    </header>
 
-    <section style="padding-top: 150px;">
-        <div class="container">
-            <h1 class="text-center">Order Statistics</h1>
-            <br>
-            <canvas class="container pt-3 card index_flower_card" id="orderChart"></canvas>
-        </div>
-    </section>
-
+    <!-- Profile Update -->
     <section>
-        <div class="container pt-3">
-            <h2 class="mb-4 text-center pt-3">Order History</h2>
-            <br>
-            <div id="order-history">
-                <div class="card-body">
-                    <div id="order-details" class="row">
-
-                    </div>
+        <h2 style="padding-top: 150px; text-align: center;">Your Payment History</h2>
+        <div class="container">
+            <div class="text-center p-4" style="border-radius: 20px; line-height: 30px;">
+                <div class="table-responsive">
+                    <table class="index_flower_card table table-bordered table-hover">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">
+                                    <h5>User</h5>
+                                </th>
+                                <th scope="col">
+                                    <h5>Flower</h5>
+                                </th>
+                                <th scope="col">
+                                    <h5>Quantity</h5>
+                                </th>
+                                <th scope="col">
+                                    <h5>Status</h5>
+                                </th>
+                                <th scope="col">
+                                    <h5>Order Date</h5>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody id="order-history">
+                            
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
-    </section>
-
-    <section>
-        <h1 class="text-center pt-3">Order Sold And Profit</h1>
-        <br>
-        <div id="order-summary" class="container p-5 index_flower_card" style="border-radius: 10px;">
-            <h2>Total Products Sold: <span id="total-products">0</span></h2>
-            <h2>Total Revenue: <span id="total-revenue">0</span></h2>
-            <h2>Total Profit: <span id="total-profit">0</span></h2>
         </div>
-        <div id="order-details" class="row mt-4"></div>
     </section>
-    
-    <br>
 
     <!-- Footer -->
     <footer>
@@ -72,7 +72,7 @@
     <script src="./js/auth.js"></script>
 
     <!-- profile update -->
-    <script src="./js/product_info.js"></script>
+    <script src="./js/order_history.js"></script>
 
     <!-- check js -->
     <script src="./js/check.js"></script>

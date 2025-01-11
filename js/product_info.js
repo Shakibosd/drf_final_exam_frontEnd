@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
     }
 
-    fetch("http://127.0.0.1:8000/orders/my_orders/", {
+    fetch("http://127.0.0.1:8000/orders/all_orders/", {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
@@ -118,7 +118,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 const orderDetail = document.createElement("div");
                 orderDetail.classList.add("col-md-12", "mb-3");
                 orderDetail.innerHTML = `
-                    <div class="card">
+                    <div class="index_flower_card">
                         <div class="card-body">
                             <h5 class="card-title">${order.flower}</h5>
                             <p class="card-text">

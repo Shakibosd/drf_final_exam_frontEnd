@@ -17,7 +17,7 @@ function fetchPosts() {
                 <h4>Title : ${post.title}</h4>
                 <p>Description : ${post.description}</p>
                 <p>Price : ${post.price} ৳</p>
-                <small>Category : <button class="btn btn-secondary"> ${post.category}</button></small>
+                <small>Category : <button class="gradient-btn"> ${post.category}</button></small>
                 <p>Stock : ${post.stock}</p>
                 <div class="d-flex gap-3">
                   <div>
