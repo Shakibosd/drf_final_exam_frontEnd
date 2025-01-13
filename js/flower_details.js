@@ -136,23 +136,14 @@ async function displayFlowerDetails(flower) {
       <br>
       `;
   const orderExists = await CheckOrder(flower.id);
-  async function checkUserLogin() {
-    const response = await fetch('https://flower-seal-backend.vercel.app/users/login/', {
-      credentials: 'include',
-    });
-    if (response.ok) {
-      return true;
-    }
-    return false;
-  }
-  
-  document.getElementById("payment-button").addEventListener("click", async (event) => {
+  const paymentButton = document.getElementById("payment-button");
+
+  paymentButton.addEventListener("click", async (event) => {
     event.preventDefault();
-    const isLoggedIn = await checkUserLogin();
-    if (isLoggedIn && orderExists) {
+    if (orderExists) {
       window.location.href = `https://flower-seal-backend.vercel.app/payment/payment/${flower.id}/`;
     } else {
-      alert("Please login to proceed with the payment.");
+      alert("You must order this flower before proceeding to payment.");
     }
   });
   order_flower(flower);
