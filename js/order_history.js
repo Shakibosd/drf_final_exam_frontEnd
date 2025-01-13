@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
-  fetch("https://flower-seal-backend.vercel.app/orders/my_orders/", {
+  fetch("http://127.0.0.1:8000/orders/my_orders/", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",

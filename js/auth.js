@@ -52,7 +52,7 @@ const handleRegister = async (event) => {
 
       console.log("Registration data", registerData);
 
-      const response = await fetch("https://flower-seal-backend.vercel.app/users/register/", {
+      const response = await fetch("http://127.0.0.1:8000/users/register/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -90,7 +90,7 @@ const handleLogin = (event) => {
     username: formData.get("username"),
     password: formData.get("password"),
   };
-  fetch("https://flower-seal-backend.vercel.app/users/login/", {
+  fetch("http://127.0.0.1:8000/users/login/", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -128,7 +128,7 @@ const handleLogout = () => {
     const token = localStorage.getItem("authToken");
     const user_id = localStorage.getItem("user_id");
 
-    fetch("https://flower-seal-backend.vercel.app/users/logout/", {
+    fetch("http://127.0.0.1:8000/users/logout/", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
