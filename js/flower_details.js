@@ -137,34 +137,24 @@ async function displayFlowerDetails(flower) {
       `;
   const orderExists = await CheckOrder(flower.id);
   async function checkUserLogin() {
-    const response = await fetch(
-      "https://flower-seal-backend.vercel.app/api/check-login/",
-      {
-        credentials: "include",
-      }
-    );
+    const response = await fetch('https://flower-seal-backend.vercel.app/users/login/', {
+      credentials: 'include',
+    });
     if (response.ok) {
       return true;
     }
     return false;
   }
-
-  document
-    .getElementById("payment-button")
-    .addEventListener("click", async (event) => {
-      event.preventDefault();
-      const isLoggedIn = await checkUserLogin();
-      const orderExists = await CheckOrder(flower.id); // Check if the user has ordered
-
-      if (isLoggedIn && orderExists) {
-        window.location.href = `https://flower-seal-backend.vercel.app/payment/payment/${flower.id}/`;
-      } else if (!orderExists) {
-        alert("You must order this flower before proceeding to payment.");
-      } else {
-        alert("Please login to proceed with the payment.");
-      }
-    });
-
+  
+  document.getElementById("payment-button").addEventListener("click", async (event) => {
+    event.preventDefault();
+    const isLoggedIn = await checkUserLogin();
+    if (isLoggedIn && orderExists) {
+      window.location.href = `https://flower-seal-backend.vercel.app/payment/payment/${flower.id}/`;
+    } else {
+      alert("Please login to proceed with the payment.");
+    }
+  });
   order_flower(flower);
   post_comment(flower.id);
   get_comments(flower.id);
@@ -377,16 +367,13 @@ const attachDeleteCommentHandlers = () => {
       const commentId = button.getAttribute("data-id");
 
       if (confirm("Are you sure you want to delete this comment?")) {
-        fetch(
-          `https://flower-seal-backend.vercel.app/flowers/comments_api/${commentId}/`,
-          {
-            method: "DELETE",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `token ${token}`,
-            },
-          }
-        )
+        fetch(`https://flower-seal-backend.vercel.app/flowers/comments_api/${commentId}/`, {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `token ${token}`,
+          },
+        })
           .then((response) => {
             if (response.ok) {
               alert("Comment deleted successfully!");
