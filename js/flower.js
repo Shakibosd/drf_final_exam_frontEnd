@@ -1,6 +1,6 @@
 //all post show frontend flower data
 function fetchPosts() {
-  fetch("http://127.0.0.1:8000/flowers/flowers/")
+  fetch("https://flower-seal-backend.vercel.app/flowers/flowers/")
     .then((response) => response.json())
     .then((data) => {
       let postList = document.getElementById("post-list");
@@ -40,7 +40,7 @@ function fetchPosts() {
 //edit flower data
 function editPost(postId) {
   console.log("Inside edit post", postId);
-  fetch(`http://127.0.0.1:8000/flowers/flowers/${postId}/`)
+  fetch(`https://flower-seal-backend.vercel.app/flowers/flowers/${postId}/`)
     .then((response) => response.json())
     .then((post) => {
       document.getElementById("edit-post-id").value = post.id;
@@ -78,7 +78,7 @@ document
       formData.append("image", imageFile);
     }
 
-    fetch(`http://127.0.0.1:8000/flowers/flowers/${postId}/`, {
+    fetch(`https://flower-seal-backend.vercel.app/flowers/flowers/${postId}/`, {
       method: "PUT",
       headers: {
         Authorization: `token ${token}`,
@@ -105,7 +105,7 @@ function deletePost(postId) {
   const token = localStorage.getItem("authToken");
   if (confirm("Are you sure you want to delete this post?")) {
     fetch(
-      `http://127.0.0.1:8000/admins/post_detail/${postId}/`,
+      `https://flower-seal-backend.vercel.app/admins/post_detail/${postId}/`,
       {
         method: "DELETE",
         headers: {

@@ -7,7 +7,7 @@ const addToCart = (flower_id) => {
     return;
   }
 
-  fetch("http://127.0.0.1:8000/flowers/cart/", {
+  fetch("https://flower-seal-backend.vercel.app/flowers/cart/", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -28,7 +28,7 @@ const addToCart = (flower_id) => {
         return;
       }
 
-      return fetch("http://127.0.0.1:8000/flowers/cart/", {
+      return fetch("https://flower-seal-backend.vercel.app/flowers/cart/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -69,7 +69,7 @@ const fetchCartItems = () => {
     return;
   }
 
-  fetch("http://127.0.0.1:8000/flowers/cart/", {
+  fetch("https://flower-seal-backend.vercel.app/flowers/cart/", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -194,7 +194,7 @@ const removeFromCart = (cart_id) => {
   }
   const token = localStorage.getItem("authToken");
 
-  fetch(`http://127.0.0.1:8000/flowers/cart/${cart_id}/`, {
+  fetch(`https://flower-seal-backend.vercel.app/flowers/cart/${cart_id}/`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",

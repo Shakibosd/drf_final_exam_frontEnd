@@ -1,7 +1,7 @@
 //chart
 async function fetchOrderStats() {
     const response = await fetch(
-        "http://127.0.0.1:8000/admins/order-stats/"
+        "https://flower-seal-backend.vercel.app/admins/order-stats/"
     );
     const data = await response.json();
     return data;
@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
     }
 
-    fetch("http://127.0.0.1:8000/orders/all_orders/", {
+    fetch("https://flower-seal-backend.vercel.app/orders/all_orders/", {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
@@ -138,7 +138,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // order info
 document.addEventListener("DOMContentLoaded", function () {
-    fetch("http://127.0.0.1:8000/orders/order_summary/")
+    fetch("https://flower-seal-backend.vercel.app/orders/order_summary/")
         .then((response) => response.json())
         .then((data) => {
             document.getElementById("total-products").textContent =
