@@ -17,6 +17,8 @@ function fetchUsers() {
             <div class="user-card card mx-auto w-100 pt-2 index_flower_card" style="border-radius:20px;" id="user-${user.id}">
               <div class="m-3">
                 <img style="width: 450px; height: 400px; border-radius: 50%;" class="img-fluid mx-auto d-flex justify-content-center align-items-center" src="${user.profile_img}" alt="">
+                <br/>
+                <h2>UserId : ${user.id}</h2>
                 <h3>Username : ${user.username}</h3>
                 <p>First Name: ${user.first_name}</p>
                 <p>Last Name: ${user.last_name}</p>

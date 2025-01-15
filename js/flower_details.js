@@ -76,9 +76,7 @@ async function displayFlowerDetails(flower) {
           </button>
         </div>
         <div class="col-12 col-md-6 col-lg-3">
-          <a class="gradient-btn-1 btn w-100" style="text-decoration: none;" id="payment-button">
-            Payment
-          </a>
+        <a class="gradient-btn-1 btn w-100" id="payment-button" href="https://sandbox.sslcommerz.com/EasyCheckOut/testcde7cd412c5a884b47f8eaa6abf4b63cd4e">Payment</a>
         </div>
         <div class="col-12 col-md-6 col-lg-3">
           <button class="gradient-btn btn w-100" style="text-decoration: none;" type="button" data-bs-toggle="collapse"
@@ -95,10 +93,6 @@ async function displayFlowerDetails(flower) {
               <div class="comment-section container card bg-white index_flower_card" id="index_flower_card"
                 style="border-radius: 10px;">
                 <div id="commentForm" class="row g-3" style="padding-top: 30px;">
-                  <!-- <div class="col-md-12">
-                    <label for="name" class="form-label"><b>Name</b></label>
-                    <input type="text" class="form-control" id="name" name="name" required />
-                  </div> -->
                   <div class="col-md-12">
                     <label for="text" class="form-label"><b>Messages</b></label>
                     <textarea class="form-control" id="text" name="text" required></textarea>
@@ -135,21 +129,10 @@ async function displayFlowerDetails(flower) {
       </div>
       <br>
       `;
-  const orderExists = await CheckOrder(flower.id);
-  const paymentButton = document.getElementById("payment-button");
-
-  paymentButton.addEventListener("click", async (event) => {
-    event.preventDefault();
-    if (orderExists) {
-      window.location.href = `https://flower-seal-backend.vercel.app/payment/payment/${flower.id}/`;
-    } else {
-      alert("You must order this flower before proceeding to payment.");
-    }
-  });
   order_flower(flower);
   post_comment(flower.id);
   get_comments(flower.id);
-}
+};
 
 // Comment check order
 const CheckOrder = async (flowerId) => {
@@ -258,9 +241,8 @@ const displayComment = (comments) => {
           <small>${comment.created_on}</small>
           <br>
           <div class="d-flex gap-3">
-            ${
-              isOwner
-                ? `
+            ${isOwner
+          ? `
               <div>
                 <a class="gradient-btn edit-comment" data-id="${comment.id}"
                   data-body="${comment.body}" style="text-decoration: none;">Edit</a>
@@ -269,8 +251,8 @@ const displayComment = (comments) => {
                 <a class="gradient-btn-1 delete-comment" data-id="${comment.id}" style="text-decoration: none;"><img src="./images/basic-ui.png" style="width: 30px; height: 20px;"></a>
               </div>
             `
-                : ""
-            }
+          : ""
+        }
           </div>
         </div>
       </div>

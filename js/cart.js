@@ -11,7 +11,7 @@ const addToCart = (flower_id) => {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Token ${token}`,
+      Authorization: `token ${token}`,
     },
   })
     .then(async (res) => {

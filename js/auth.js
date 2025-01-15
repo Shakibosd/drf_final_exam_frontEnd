@@ -140,6 +140,7 @@ const handleLogout = () => {
         if (res.ok) {
           localStorage.removeItem("authToken");
           localStorage.removeItem("user_id");
+          localStorage.removeItem("username");
           window.location.href = "./login.html";
         } else {
           console.log("Logout failed");
