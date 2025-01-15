@@ -76,7 +76,7 @@ async function displayFlowerDetails(flower) {
           </button>
         </div>
         <div class="col-12 col-md-6 col-lg-3">
-        <a class="gradient-btn-1 btn w-100" id="payment-button" href="https://sandbox.sslcommerz.com/EasyCheckOut/testcde7cd412c5a884b47f8eaa6abf4b63cd4e">Payment</a>
+        <a class="gradient-btn-1 btn w-100" id="payment-button">Payment</a>
         </div>
         <div class="col-12 col-md-6 col-lg-3">
           <button class="gradient-btn btn w-100" style="text-decoration: none;" type="button" data-bs-toggle="collapse"
@@ -129,10 +129,22 @@ async function displayFlowerDetails(flower) {
       </div>
       <br>
       `;
+  const orderExists = await CheckOrder(flower.id);
+  const paymentButton = document.getElementById("payment-button");
+
+  paymentButton.addEventListener("click", async (event) => {
+    event.preventDefault();
+    if (orderExists) {
+      window.location.href =
+        "https://sandbox.sslcommerz.com/EasyCheckOut/testcde7cd412c5a884b47f8eaa6abf4b63cd4e";
+    } else {
+      alert("You must order this flower before proceeding to payment.");
+    }
+  });
   order_flower(flower);
   post_comment(flower.id);
   get_comments(flower.id);
-};
+}
 
 // Comment check order
 const CheckOrder = async (flowerId) => {
@@ -241,8 +253,9 @@ const displayComment = (comments) => {
           <small>${comment.created_on}</small>
           <br>
           <div class="d-flex gap-3">
-            ${isOwner
-          ? `
+            ${
+              isOwner
+                ? `
               <div>
                 <a class="gradient-btn edit-comment" data-id="${comment.id}"
                   data-body="${comment.body}" style="text-decoration: none;">Edit</a>
@@ -251,8 +264,8 @@ const displayComment = (comments) => {
                 <a class="gradient-btn-1 delete-comment" data-id="${comment.id}" style="text-decoration: none;"><img src="./images/basic-ui.png" style="width: 30px; height: 20px;"></a>
               </div>
             `
-          : ""
-        }
+                : ""
+            }
           </div>
         </div>
       </div>
@@ -340,13 +353,16 @@ const attachDeleteCommentHandlers = () => {
       const commentId = button.getAttribute("data-id");
 
       if (confirm("Are you sure you want to delete this comment?")) {
-        fetch(`https://flower-seal-backend.vercel.app/flowers/comments_api/${commentId}/`, {
-          method: "DELETE",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `token ${token}`,
-          },
-        })
+        fetch(
+          `https://flower-seal-backend.vercel.app/flowers/comments_api/${commentId}/`,
+          {
+            method: "DELETE",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `token ${token}`,
+            },
+          }
+        )
           .then((response) => {
             if (response.ok) {
               alert("Comment deleted successfully!");
