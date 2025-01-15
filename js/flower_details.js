@@ -129,7 +129,7 @@ async function displayFlowerDetails(flower) {
       </div>
       <br>
       `;
-  const orderExists = await CheckOrder(flower.id);
+  const orderExists = await CheckOrder();
   const paymentButton = document.getElementById("payment-button");
 
   paymentButton.addEventListener("click", async (event) => {
