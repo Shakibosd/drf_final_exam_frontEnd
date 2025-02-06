@@ -110,6 +110,7 @@ async function displayFlowerDetails(flower) {
         </div>
       </div>
       </br>
+      <details>Sslcommerz পেমেন্ট ইন্টিগ্রেশন সত্যিকার অর্থে কোনো পেমেন্ট হবে না।</details>
       <!-- Modal -->
       <div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="orderModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -129,18 +130,22 @@ async function displayFlowerDetails(flower) {
       </div>
       <br>
       `;
-  const orderExists = await CheckOrder();
   const paymentButton = document.getElementById("payment-button");
-
   paymentButton.addEventListener("click", async (event) => {
     event.preventDefault();
-    if (orderExists) {
-      window.location.href =
-        "https://sandbox.sslcommerz.com/EasyCheckOut/testcde7cd412c5a884b47f8eaa6abf4b63cd4e";
-    } else {
-      alert("You must order this flower before proceeding to payment.");
+    try {
+      const orderExists = await CheckOrder(flower.id);
+      if (orderExists) {
+        window.location.href = "https://sandbox.sslcommerz.com/EasyCheckOut/testcde0fa1a430499050ba087f1fe5309f3c5a";
+      } else {
+        alert("You must order this flower before proceeding to payment.");
+      }
+    } catch (error) {
+      console.error("Error checking order:", error);
+      alert("An error occurred. Please try again.");
     }
   });
+
   order_flower(flower);
   post_comment(flower.id);
   get_comments(flower.id);
@@ -148,6 +153,11 @@ async function displayFlowerDetails(flower) {
 
 // Comment check order
 const CheckOrder = async (flowerId) => {
+  if (!flowerId) {
+    console.error("Flower ID is missing.");
+    return false;
+  }
+
   const token = localStorage.getItem("authToken");
   if (!token) {
     alert("You need to log in to check order status.");
@@ -155,8 +165,9 @@ const CheckOrder = async (flowerId) => {
   }
 
   try {
+    console.log("Checking order for flowerId:", flowerId); // Debugging
     const response = await fetch(
-      `https://flower-seal-backend.vercel.app/flowers/check_order/?flowerId=${flowerId}`,
+      `https://flower-seal-backend.vercel.app/flowers/check_order/?flowerId=${flowerId}`, // Ensure flowerId is included
       {
         method: "GET",
         headers: {
@@ -166,8 +177,11 @@ const CheckOrder = async (flowerId) => {
       }
     );
 
+    console.log("API Response:", response); // Debugging
+
     if (response.ok) {
       const data = await response.json();
+      console.log("Order exists:", data.order_exists); // Debugging
       return data.order_exists;
     } else {
       console.error("Failed to check order:", response.statusText);
@@ -253,9 +267,8 @@ const displayComment = (comments) => {
           <small>${comment.created_on}</small>
           <br>
           <div class="d-flex gap-3">
-            ${
-              isOwner
-                ? `
+            ${isOwner
+          ? `
               <div>
                 <a class="gradient-btn edit-comment" data-id="${comment.id}"
                   data-body="${comment.body}" style="text-decoration: none;">Edit</a>
@@ -264,8 +277,8 @@ const displayComment = (comments) => {
                 <a class="gradient-btn-1 delete-comment" data-id="${comment.id}" style="text-decoration: none;"><img src="./images/basic-ui.png" style="width: 30px; height: 20px;"></a>
               </div>
             `
-                : ""
-            }
+          : ""
+        }
           </div>
         </div>
       </div>

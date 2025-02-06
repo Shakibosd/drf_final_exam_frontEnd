@@ -142,19 +142,3 @@ document.addEventListener("DOMContentLoaded", () => {
     .catch((error) => console.error("Error fetching order history:", error));
 });
 
-// order info
-document.addEventListener("DOMContentLoaded", function () {
-  fetch("https://flower-seal-backend.vercel.app/orders/order_summary/")
-    .then((response) => response.json())
-    .then((data) => {
-      document.getElementById("total-products").textContent =
-        data.total_products_sold;
-      document.getElementById(
-        "total-revenue"
-      ).textContent = `${data.total_revenue}`;
-      document.getElementById(
-        "total-profit"
-      ).textContent = `${data.total_profit}`;
-    })
-    .catch((error) => console.error("Error fetching order summary:", error));
-});

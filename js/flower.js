@@ -56,56 +56,110 @@ function editPost(postId) {
 }
 
 //edit form flower data
-document
-  .getElementById("edit-post-form")
-  .addEventListener("submit", function (e) {
+document.addEventListener("DOMContentLoaded", function () {
+  document.getElementById("edit-post-form").addEventListener("submit", function (e) {
     e.preventDefault();
 
     const token = localStorage.getItem("authToken");
-    const postId = document.getElementById("edit-post-id").value;
-    const formData = new FormData();
-    formData.append("title", document.getElementById("edit-title").value);
-    formData.append(
-      "description",
-      document.getElementById("edit-description").value
-    );
-    formData.append("price", document.getElementById("edit-price").value);
-    formData.append("category", document.getElementById("edit-category").value);
-    formData.append("stock", document.getElementById("edit-stock").value);
-
-    const imageFile = document.getElementById("edit-image").files[0];
-    if (imageFile) {
-      formData.append("image", imageFile);
+    if (!token) {
+      alert("You are not authenticated. Please log in.");
+      return;
     }
 
-    fetch(`https://flower-seal-backend.vercel.app/flowers/flowers/${postId}/`, {
-      method: "PUT",
-      headers: {
-        Authorization: `token ${token}`,
-      },
-      body: formData,
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Failed to update post");
-        }
-        return response.json();
+    const postId = document.getElementById("edit-post-id").value;
+    const title = document.getElementById("edit-title").value;
+    const description = document.getElementById("edit-description").value;
+    const price = document.getElementById("edit-price").value;
+    const category = document.getElementById("edit-category").value;
+    const stock = document.getElementById("edit-stock").value;
+    const imageFile = document.getElementById("edit-image").files[0];
+
+    if (imageFile) {
+      const imgbbFormData = new FormData();
+      imgbbFormData.append("image", imageFile);
+
+      fetch("https://api.imgbb.com/1/upload?key=2bc3cad9a1fb82d25c2c1bb0ab49b035", {
+        method: "POST",
+        body: imgbbFormData,
       })
-      .then((data) => {
-        console.log("Post updated:", data);
-        alert("Post updated successfully!");
-        document.getElementById("edit-post-form").style.display = "none";
-        fetchPosts();
+        .then((response) => response.json())
+        .then((imgbbData) => {
+          if (imgbbData.success) {
+            const imageUrl = imgbbData.data.url;
+
+            const flowerData = {
+              title: title,
+              description: description,
+              price: price,
+              category: category,
+              stock: stock,
+              image: imageUrl,
+            };
+
+            fetch(`https://flower-seal-backend.vercel.app/flowers/flowers/${postId}/`, {
+              method: "PUT",
+              headers: {
+                Authorization: `token ${token}`,
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(flowerData),
+            })
+              .then((response) => {
+                if (!response.ok) {
+                  throw new Error("Failed to update post");
+                }
+                return response.json();
+              })
+              .then((data) => {
+                console.log("Post updated:", data);
+                alert("Post updated successfully!");
+                window.location.reload(); // Reload the page to reflect changes
+              })
+              .catch((error) => console.error("Error updating post:", error));
+          } else {
+            throw new Error("Failed to upload image to ImgBB");
+          }
+        })
+        .catch((error) => console.error("Error uploading image:", error));
+    } else {
+      const flowerData = {
+        title: title,
+        description: description,
+        price: price,
+        category: category,
+        stock: stock,
+      };
+
+      fetch(`https://flower-seal-backend.vercel.app/flowers/flowers/${postId}/`, {
+        method: "PUT",
+        headers: {
+          Authorization: `token ${token}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(flowerData),
       })
-      .catch((error) => console.error("Error updating post:", error));
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Failed to update post");
+          }
+          return response.json();
+        })
+        .then((data) => {
+          console.log("Post updated:", data);
+          alert("Post updated successfully!");
+          window.location.reload(); // Reload the page to reflect changes
+        })
+        .catch((error) => console.error("Error updating post:", error));
+    }
   });
+});
 
 //delete flower data
 function deletePost(postId) {
   const token = localStorage.getItem("authToken");
   if (confirm("Are you sure you want to delete this post?")) {
     fetch(
-      `https://flower-seal-backend.vercel.app/admins/post_detail/${postId}/`,
+      `https://flower-seal-backend.vercel.app/flowers/flowers/${postId}/`,
       {
         method: "DELETE",
         headers: {

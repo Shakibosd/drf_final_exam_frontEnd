@@ -38,7 +38,7 @@ document.getElementById("create-post-form")
 
           const token = localStorage.getItem("authToken");
 
-          fetch("https://flower-seal-backend.vercel.app/admins/post_list/", {
+          fetch("https://flower-seal-backend.vercel.app/flowers/flowers/", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
