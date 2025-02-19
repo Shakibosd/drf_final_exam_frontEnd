@@ -136,7 +136,7 @@ async function displayFlowerDetails(flower) {
     try {
       const orderExists = await CheckOrder(flower.id);
       if (orderExists) {
-        window.location.href = "https://sandbox.sslcommerz.com/EasyCheckOut/testcde0fa1a430499050ba087f1fe5309f3c5a";
+        window.location.href = `https://flower-seal-backend.vercel.app/payments/payment/flower/${flower.id}/`;
       } else {
         alert("You must order this flower before proceeding to payment.");
       }
