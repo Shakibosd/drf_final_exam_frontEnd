@@ -52,7 +52,7 @@ const handleRegister = async (event) => {
 
       console.log("Registration data", registerData);
 
-      const response = await fetch("https://flower-seal-backend.vercel.app/users/register/", {
+      const response = await fetch("http://127.0.0.1:8000/api/v1/user/register/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -62,9 +62,9 @@ const handleRegister = async (event) => {
 
       if (response.ok) {
         alert(
-          "Registration Successful. Please check your email for a confirmation."
+          "Registration Successful. Please check your email for OTP verification."
         );
-        window.location.href = "./login.html";
+        window.location.href = "./otp_verify.html";
       } else {
         const errorData = await response.json();
         console.error("Register Failed:", errorData);
@@ -80,6 +80,59 @@ const handleRegister = async (event) => {
   }
 };
 
+// Resend OTP
+const handleResendOTP = async (event) => {
+  event.preventDefault();
+  const email = document.getElementById('email_resend').value;
+
+  try {
+    const response = await fetch('http://127.0.0.1:8000/api/v1/user/resend_otp/', {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email }),
+    });
+    const data = await response.json();
+
+    if (response.ok) {
+      alert('OTP has been resent to your email.');
+    } else {
+      console.error("OTP Resend Failed:", data);
+      alert("OTP Resend Failed: " + (data.message || "Unknown error"));
+    }
+  } catch (error) {
+    console.error("Error Resending OTP:", error);
+    alert("An Error Occurred While Resending OTP, Please Try Again.");
+  }
+};
+
+// Verify OTP
+const handleVerifyOTP = async (event) => {
+  event.preventDefault();
+
+  const email = document.getElementById('email').value;
+  const otp = document.getElementById('otp').value;
+
+  try {
+    const response = await fetch('http://127.0.0.1:8000/api/v1/user/verify_otp/', {
+      method: "POST",
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, otp }),
+    });
+    const data = await response.json();
+
+    if (response.ok) {
+      alert("Account Activated Successfully!");
+      window.location.href = "./login.html";
+    } else {
+      console.error("OTP Verification Failed:", data);
+      alert("OTP Verification Failed: " + (data.Error || data.message || "Unknown error"));
+    }
+  } catch (error) {
+    console.error("Error Verifying OTP:", error);
+    alert("An Error Occurred While Verifying OTP, Please Try Again.");
+  }
+};
+
 // Login part
 const handleLogin = (event) => {
   event.preventDefault();
@@ -90,7 +143,7 @@ const handleLogin = (event) => {
     username: formData.get("username"),
     password: formData.get("password"),
   };
-  fetch("https://flower-seal-backend.vercel.app/users/login/", {
+  fetch("http://127.0.0.1:8000/api/v1/user/login/", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -128,7 +181,7 @@ const handleLogout = () => {
     const token = localStorage.getItem("authToken");
     const user_id = localStorage.getItem("user_id");
 
-    fetch("https://flower-seal-backend.vercel.app/users/logout/", {
+    fetch("http://127.0.0.1:8000/api/v1/user/logout/", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

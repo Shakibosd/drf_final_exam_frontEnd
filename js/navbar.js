@@ -8,7 +8,7 @@ fetch("navbar.html")
     const username = localStorage.getItem("username");
 
     if (token) {
-      fetch("https://flower-seal-backend.vercel.app/admins/is_admin/", {
+      fetch("http://127.0.0.1:8000/api/v1/admins/", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

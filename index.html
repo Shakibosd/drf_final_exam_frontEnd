@@ -22,6 +22,19 @@
 </head>
 
 <body>
+  <style>
+    @media screen and (max-width: 768px) {
+      .pad-top-carusel {
+        padding-top: 5rem;
+      }
+    }
+
+    @media screen and (min-width: 1012px) {
+      .pad-top-carusel {
+        padding-top: 4rem;
+      }
+    }
+  </style>
   <!-- header area -->
   <header>
     <!-- Navbar -->
@@ -31,8 +44,8 @@
     </header>
 
     <!-- dark mode area -->
-    <div style="padding-top: 4rem">
-      <h4 class="p-5">
+    <div class="pad-top-carusel">
+      <h4 class="p-4">
         <div class="toggle-container">
           <div class="card text-center" style="width: 2rem; position: fixed">
             <div>
@@ -78,85 +91,38 @@
         </div>
       </div>
     </section>
-
-    <!-- animation area -->
-    <section>
-      <div class="flower_left">
-        <div class="flower">
-          <div class="f-wrapper">
-            <div class="flower__line"></div>
-            <div class="f">
-              <div class="flower__leaf flower__leaf--1"></div>
-              <div class="flower__leaf flower__leaf--2"></div>
-              <div class="flower__leaf flower__leaf--3"></div>
-              <div class="flower__leaf flower__leaf--4"></div>
-              <div class="flower__leaf flower__leaf--5"></div>
-              <div class="flower__leaf flower__leaf--6"></div>
-              <div class="flower__leaf flower__leaf--7"></div>
-            </div>
-          </div>
-
-          <div class="f-wrapper f-wrapper--2">
-            <div class="flower__line"></div>
-            <div class="f">
-              <div class="flower__leaf flower__leaf--1"></div>
-              <div class="flower__leaf flower__leaf--2"></div>
-              <div class="flower__leaf flower__leaf--3"></div>
-              <div class="flower__leaf flower__leaf--4"></div>
-              <div class="flower__leaf flower__leaf--5"></div>
-              <div class="flower__leaf flower__leaf--6"></div>
-              <div class="flower__leaf flower__leaf--7"></div>
-              <div class="flower__leaf flower__leaf--8 flower__fall-down--pink"></div>
-            </div>
-          </div>
-
-          <div class="f-wrapper f-wrapper--3">
-            <div class="flower__line"></div>
-            <div class="f">
-              <div class="flower__leaf flower__leaf--1"></div>
-              <div class="flower__leaf flower__leaf--2"></div>
-              <div class="flower__leaf flower__leaf--3"></div>
-              <div class="flower__leaf flower__leaf--4"></div>
-              <div class="flower__leaf flower__leaf--5"></div>
-              <div class="flower__leaf flower__leaf--6"></div>
-              <div class="flower__leaf flower__leaf--7"></div>
-              <div class="flower__leaf flower__leaf--8 flower__fall-down--purple"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
   </header>
   <!-- main area -->
   <main>
     <!-- Seasonal Flowers Section -->
+    <br>
     <section>
       <div id="seasonal-flowers" class="seasonal-flowers-section all_container">
         <h1>Seasonal Flowers</h1>
-        <div class="flowers-grid">
+        <div class="flowers-grid pt-3">
           <div class="flower-card index_flower_card">
             <img src="./images/spring_flower.jpg" alt="Spring Flowers" />
             <h4>Spring Blooms</h4>
-            <details>
+            <p>
               Explore vibrant flowers that flourish in spring.
-            </details>
+            </p>
           </div>
           <div class="flower-card index_flower_card">
             <img src="./images/summer_flower.jpg" alt="Summer Flowers" />
             <h4>Summer Radiance</h4>
-            <details>
+            <p>
               Enjoy the colors of summer with these beautiful flowers.
-            </details>
+            </p>
           </div>
           <div class="flower-card index_flower_card">
             <img src="./images/autumn_flower.jpg" alt="Autumn Flowers" />
             <h4>Autumn Hues</h4>
-            <details>Discover the rich tones of autumn blooms.</details>
+            <p>Discover the rich tones of autumn blooms.</p>
           </div>
           <div class="flower-card index_flower_card">
             <img src="./images/winter_flower.jpg" alt="Winter Flowers" />
             <h4>Winter Whites</h4>
-            <details>Find the elegance of winter flowers.</details>
+            <p>Find the elegance of winter flowers.</p>
           </div>
         </div>
       </div>
@@ -170,19 +136,19 @@
           <div class="arrangement-card index_flower_card">
             <img src="./images/wedding_arrangement.jpg" alt="Wedding Arrangement" class="img-fluid" />
             <h3>Wedding Centerpiece</h3>
-            <details>
+            <p>
               Elegant floral arrangements for your special day.
-            </details>
+            </p>
           </div>
           <div class="arrangement-card index_flower_card">
             <img src="./images/home_decoration.jpg" alt="Home Decoration" class="img-fluid" />
             <h3>Home Decoration</h3>
-            <details>Add beauty to your home with these ideas.</details>
+            <p>Add beauty to your home with these ideas.</p>
           </div>
           <div class="arrangement-card index_flower_card">
             <img src="./images/table_setting.jpg" alt="Table Setting" class="img-fluid" />
             <h3>Table Settings</h3>
-            <details>Beautiful centerpieces for your dining table.</details>
+            <p>Beautiful centerpieces for your dining table.</p>
           </div>
         </div>
       </div>

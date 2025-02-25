@@ -1,6 +1,6 @@
 //all post show frontend flower data
 function fetchPosts() {
-  fetch("https://flower-seal-backend.vercel.app/flowers/flowers/")
+  fetch("http://127.0.0.1:8000/api/v1/flower/flower_all/")
     .then((response) => response.json())
     .then((data) => {
       let postList = document.getElementById("post-list");
@@ -40,7 +40,7 @@ function fetchPosts() {
 //edit flower data
 function editPost(postId) {
   console.log("Inside edit post", postId);
-  fetch(`https://flower-seal-backend.vercel.app/flowers/flowers/${postId}/`)
+  fetch(`http://127.0.0.1:8000/api/v1/flower/flower_detail/${postId}/`)
     .then((response) => response.json())
     .then((post) => {
       document.getElementById("edit-post-id").value = post.id;
@@ -96,7 +96,7 @@ document.addEventListener("DOMContentLoaded", function () {
               image: imageUrl,
             };
 
-            fetch(`https://flower-seal-backend.vercel.app/flowers/flowers/${postId}/`, {
+            fetch(`http://127.0.0.1:8000/api/v1/flower/flower_detail/${postId}/`, {
               method: "PUT",
               headers: {
                 Authorization: `token ${token}`,
@@ -113,7 +113,7 @@ document.addEventListener("DOMContentLoaded", function () {
               .then((data) => {
                 console.log("Post updated:", data);
                 alert("Post updated successfully!");
-                window.location.reload(); // Reload the page to reflect changes
+                window.location.reload(); 
               })
               .catch((error) => console.error("Error updating post:", error));
           } else {
@@ -130,7 +130,7 @@ document.addEventListener("DOMContentLoaded", function () {
         stock: stock,
       };
 
-      fetch(`https://flower-seal-backend.vercel.app/flowers/flowers/${postId}/`, {
+      fetch(`http://127.0.0.1:8000/api/v1/flower/flower_detail/${postId}/`, {
         method: "PUT",
         headers: {
           Authorization: `token ${token}`,
@@ -147,7 +147,7 @@ document.addEventListener("DOMContentLoaded", function () {
         .then((data) => {
           console.log("Post updated:", data);
           alert("Post updated successfully!");
-          window.location.reload(); // Reload the page to reflect changes
+          window.location.reload(); 
         })
         .catch((error) => console.error("Error updating post:", error));
     }
@@ -159,7 +159,7 @@ function deletePost(postId) {
   const token = localStorage.getItem("authToken");
   if (confirm("Are you sure you want to delete this post?")) {
     fetch(
-      `https://flower-seal-backend.vercel.app/flowers/flowers/${postId}/`,
+      `http://127.0.0.1:8000/api/v1/flower/flower_detail/${postId}/`,
       {
         method: "DELETE",
         headers: {

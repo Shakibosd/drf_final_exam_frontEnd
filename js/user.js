@@ -1,7 +1,7 @@
 //user list show data
 function fetchUsers() {
   const token = localStorage.getItem("authToken");
-  fetch("https://flower-seal-backend.vercel.app/users/user/", {
+  fetch("http://127.0.0.1:8000/api/v1/user/user_all/", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
