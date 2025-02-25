@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   function fetchFlowers(filter) {
-    fetch("http://127.0.0.1:8000/api/v1/flower/flower_all/")
+    fetch("https://flower-seal-backend.vercel.app/api/v1/flower/flower_all/")
       .then((res) => res.json())
       .then((data) => {
         let filteredFlowers = data;
@@ -79,7 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", function () {
   const careTipsContainer = document.getElementById("care-tips");
 
-  const apiURL = "http://127.0.0.1:8000/api/v1/flower/care_tips/";
+  const apiURL = "https://flower-seal-backend.vercel.app/api/v1/flower/care_tips/";
 
   fetch(apiURL)
     .then((response) => response.json())

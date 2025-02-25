@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const userId = localStorage.getItem("user_id");
   const token = localStorage.getItem("authToken");
 
-  fetch(`http://127.0.0.1:8000/api/v1/user/user_detail/${userId}/`, {
+  fetch(`https://flower-seal-backend.vercel.app/api/v1/user/user_detail/${userId}/`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
       profile_img: document.getElementById("profile-img").src,
     };
 
-    fetch(`http://127.0.0.1:8000/api/v1/user/user_detail/${userId}/`, {
+    fetch(`https://flower-seal-backend.vercel.app/api/v1/user/user_detail/${userId}/`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

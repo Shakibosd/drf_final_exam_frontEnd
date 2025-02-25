@@ -52,7 +52,7 @@ const handleRegister = async (event) => {
 
       console.log("Registration data", registerData);
 
-      const response = await fetch("http://127.0.0.1:8000/api/v1/user/register/", {
+      const response = await fetch("https://flower-seal-backend.vercel.app/api/v1/user/register/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -86,7 +86,7 @@ const handleResendOTP = async (event) => {
   const email = document.getElementById('email_resend').value;
 
   try {
-    const response = await fetch('http://127.0.0.1:8000/api/v1/user/resend_otp/', {
+    const response = await fetch('https://flower-seal-backend.vercel.app/api/v1/user/resend_otp/', {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email }),
@@ -113,7 +113,7 @@ const handleVerifyOTP = async (event) => {
   const otp = document.getElementById('otp').value;
 
   try {
-    const response = await fetch('http://127.0.0.1:8000/api/v1/user/verify_otp/', {
+    const response = await fetch('https://flower-seal-backend.vercel.app/api/v1/user/verify_otp/', {
       method: "POST",
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, otp }),
@@ -143,7 +143,7 @@ const handleLogin = (event) => {
     username: formData.get("username"),
     password: formData.get("password"),
   };
-  fetch("http://127.0.0.1:8000/api/v1/user/login/", {
+  fetch("https://flower-seal-backend.vercel.app/api/v1/user/login/", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -181,7 +181,7 @@ const handleLogout = () => {
     const token = localStorage.getItem("authToken");
     const user_id = localStorage.getItem("user_id");
 
-    fetch("http://127.0.0.1:8000/api/v1/user/logout/", {
+    fetch("https://flower-seal-backend.vercel.app/api/v1/user/logout/", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
